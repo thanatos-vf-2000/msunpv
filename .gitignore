@@ -1,0 +1,7 @@
+help
+src/__pycache__
+docs/_build
+docs/_static
+docs/_templates
+dist/
+.pypirc
