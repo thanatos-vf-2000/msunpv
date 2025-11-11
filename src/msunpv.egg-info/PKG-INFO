@@ -1,0 +1,31 @@
+Metadata-Version: 2.4
+Name: msunpv
+Version: 0.1.0
+Summary: Library to interface an msunpv devices.
+Author-email: franck VANHOUCKE <vanhoucke.franck@free.fr>
+License-Expression: Apache-2.0
+Project-URL: Homepage, https://github.com/thanatos-vf-2000/msunpv
+Project-URL: Issues, https://github.com/thanatos-vf-2000/msunpv
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Programming Language :: Python :: 3.14
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiohttp<4,>=3
+Requires-Dist: xmltodict
+Dynamic: license-file
+
+# msunpv library
+msunpv library for Python 3. The library was created to call api from your msunpv.
+
+See <https://ard-tek.com/> for more information on the MSunPV MD Router Solar.
+
+## Example usage
+
+See [example.py](./example.py) for a basic usage and tests
+
+```code
+PYTHONPATH=./src/ python3 example.py <IP>
+```
