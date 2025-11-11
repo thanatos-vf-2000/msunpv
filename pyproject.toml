@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "msunpv"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
   { name="franck VANHOUCKE", email="vanhoucke.franck@free.fr" },
 ]
@@ -27,3 +27,4 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/thanatos-vf-2000/msunpv"
 Issues = "https://github.com/thanatos-vf-2000/msunpv"
+Documents = "https://thanatos-vf-2000.github.io/msunpv/"
