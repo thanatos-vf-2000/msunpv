@@ -1,6 +1,0 @@
-help
-src/__pycache__
-docs/_static
-docs/_templates
-dist/
-.pypirc
