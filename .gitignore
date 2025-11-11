@@ -1,6 +1,7 @@
 help
 src/__pycache__
 src/msunpv.egg-info
+src/msunpv/__pycache__
 docs/_build
 docs/_static
 docs/_templates
