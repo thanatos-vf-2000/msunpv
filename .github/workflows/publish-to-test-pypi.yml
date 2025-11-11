@@ -1,5 +1,10 @@
 name: Publish Python 🐍 distribution 📦 to PyPI and TestPyPI
+
 on: push
+
+permissions:
+  contents: read
+  id-token: write  # requis pour Trusted Publishing
 
 jobs:
   build:
@@ -51,7 +56,7 @@ jobs:
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        password: ${{ secrets.PYPI_API_TOKEN }}
+          attestations: true
       
 
   publish-to-testpypi:
@@ -76,5 +81,6 @@ jobs:
     - name: Publish distribution 📦 to TestPyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        repository-url: https://test.pypi.org/legacy/
-        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          attestations: true
+          repository-url: https://test.pypi.org/legacy/
+
