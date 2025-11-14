@@ -18,9 +18,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
+      - name: Install dependencies Sphinx
         run: |
           pip install sphinx sphinx_rtd_theme
+          
+      - name: Install project dependencies (pyproject.toml)
+        run: |
+          pip install -e .
 
       - name: Build documentation
         run: |
