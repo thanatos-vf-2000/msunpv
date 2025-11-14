@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>msunpv package &mdash; msunpv 0.1.2 documentation</title>
+  <title>msunpv package &mdash; msunpv 0.2.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=92734c54"></script>
+      <script src="_static/documentation_options.js?v=938c9ccc"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -46,7 +46,10 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">msunpv package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-msunpv.const">msunpv.const module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-msunpv.const">msunpv.const module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#msunpv.const.DEFAULT_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_TIMEOUT</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-msunpv.data">msunpv.data module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#msunpv.data.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#msunpv.data.Command.cmdtxt"><code class="docutils literal notranslate"><span class="pre">Command.cmdtxt</span></code></a></li>
@@ -289,7 +292,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">msunpv package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-msunpv.const">msunpv.const module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-msunpv.const">msunpv.const module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.const.DEFAULT_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_TIMEOUT</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-msunpv.data">msunpv.data module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#msunpv.data.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#msunpv.data.CounterType"><code class="docutils literal notranslate"><span class="pre">CounterType</span></code></a></li>
@@ -361,6 +367,12 @@
 <section id="module-msunpv.const">
 <span id="msunpv-const-module"></span><h2>msunpv.const module<a class="headerlink" href="#module-msunpv.const" title="Link to this heading"></a></h2>
 <p>Constants for MSunPV WebConnect library for Python.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="msunpv.const.DEFAULT_TIMEOUT">
+<span class="sig-prename descclassname"><span class="pre">msunpv.const.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_TIMEOUT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">15</span></em><a class="headerlink" href="#msunpv.const.DEFAULT_TIMEOUT" title="Link to this definition"></a></dt>
+<dd><p>Default time out 15s</p>
+</dd></dl>
+
 </section>
 <section id="module-msunpv.data">
 <span id="msunpv-data-module"></span><h2>msunpv.data module<a class="headerlink" href="#module-msunpv.data" title="Link to this heading"></a></h2>
@@ -372,37 +384,44 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.Command.cmdtxt">
 <span class="sig-name descname"><span class="pre">cmdtxt</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.Command.cmdtxt" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command Text label</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.Command.cmdtype">
 <span class="sig-name descname"><span class="pre">cmdtype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#msunpv.data.Command.cmdtype" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command Type</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.Command.cmdvalue">
 <span class="sig-name descname"><span class="pre">cmdvalue</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#msunpv.data.Command.cmdvalue" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command Value</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.Command.param1">
 <span class="sig-name descname"><span class="pre">param1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.Command.param1" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command parameter 1</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.Command.param2">
 <span class="sig-name descname"><span class="pre">param2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.Command.param2" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command parameter 2</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.Command.param3">
 <span class="sig-name descname"><span class="pre">param3</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.Command.param3" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command parameter 3</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.Command.param4">
 <span class="sig-name descname"><span class="pre">param4</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.Command.param4" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command parameter 4</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -437,25 +456,30 @@
 <dt class="sig sig-object py" id="msunpv.data.GenericType">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">msunpv.data.</span></span><span class="sig-name descname"><span class="pre">GenericType</span></span><a class="reference internal" href="_modules/msunpv/data.html#GenericType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.data.GenericType" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
+<p>Generic Type for Sensor and Counter</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.GenericType.dotpos">
 <span class="sig-name descname"><span class="pre">dotpos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#msunpv.data.GenericType.dotpos" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>N/A</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.GenericType.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.GenericType.name" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Name</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.GenericType.suffix">
 <span class="sig-name descname"><span class="pre">suffix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.GenericType.suffix" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>suffix or unit</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.GenericType.type">
 <span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#msunpv.data.GenericType.type" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Type of Sensor Or Counter (MsunPV internal type)</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -463,10 +487,25 @@
 <dt class="sig sig-object py" id="msunpv.data.MSunPVCommon">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">msunpv.data.</span></span><span class="sig-name descname"><span class="pre">MSunPVCommon</span></span><a class="reference internal" href="_modules/msunpv/data.html#MSunPVCommon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.data.MSunPVCommon" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generic Class function used in MSunPVDataStatus and MSunPVDataIndex</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVCommon.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/msunpv/data.html#MSunPVCommon.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.data.MSunPVCommon.get" title="Link to this definition"></a></dt>
-<dd><p>Retourne la valeur d’un attribut si il existe, sinon None.</p>
+<dd><p>Returns the value of an attribute if it exists, otherwise None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>attribute</strong> (<em>str</em>) – name of attribute (in lower case)</p>
+</dd>
+</dl>
+<p>Raises:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None or value of attribute</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -495,7 +534,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.date">
 <span class="sig-name descname"><span class="pre">date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataIndex.date" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Date <code class="docutils literal notranslate"><span class="pre">05/06/2025</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.firmware_router">
@@ -506,12 +546,14 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.firmware_wifi">
 <span class="sig-name descname"><span class="pre">firmware_wifi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataIndex.firmware_wifi" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Firmware Wifi <code class="docutils literal notranslate"><span class="pre">105b</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.modele">
 <span class="sig-name descname"><span class="pre">modele</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataIndex.modele" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Router model MS_PV2_2d or MS_PV4_4d <code class="docutils literal notranslate"><span class="pre">MS_PV2_2d</span></code></p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.output_type_txt">
@@ -521,12 +563,14 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.sd_delay">
 <span class="sig-name descname"><span class="pre">sd_delay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataIndex.sd_delay" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Recording interval on SD - minutes and seconds <code class="docutils literal notranslate"><span class="pre">01:00</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.sd_save">
 <span class="sig-name descname"><span class="pre">sd_save</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataIndex.sd_save" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>SD recording On/Off <code class="docutils literal notranslate"><span class="pre">On</span></code></p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.sensor_type_info">
@@ -536,12 +580,14 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.serial_number">
 <span class="sig-name descname"><span class="pre">serial_number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataIndex.serial_number" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Serial number <code class="docutils literal notranslate"><span class="pre">0000224</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.time">
 <span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataIndex.time" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Time <code class="docutils literal notranslate"><span class="pre">16:03:53</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.typans">
@@ -557,7 +603,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataIndex.version">
 <span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataIndex.version" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Project version <code class="docutils literal notranslate"><span class="pre">5.0.1</span></code></p>
+</dd></dl>
 
 </dd></dl>
 
@@ -574,7 +621,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.clock">
 <span class="sig-name descname"><span class="pre">clock</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.clock" title="Link to this definition"></a></dt>
-<dd><p>rssi - Wifi Received Signal Strength Indication</p>
+<dd><p>Time and Day (on two characters in French) <code class="docutils literal notranslate"><span class="pre">16:03:53</span> <span class="pre">ME</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -635,29 +682,31 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.daily_radiator_consumption">
 <span class="sig-name descname"><span class="pre">daily_radiator_consumption</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.daily_radiator_consumption" title="Link to this definition"></a></dt>
-<dd><p>chOutVal - Values calculated at the output of the heating modules</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.date">
 <span class="sig-name descname"><span class="pre">date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.date" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Date <code class="docutils literal notranslate"><span class="pre">05/06/2025</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.firmware_router">
 <span class="sig-name descname"><span class="pre">firmware_router</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.firmware_router" title="Link to this definition"></a></dt>
-<dd><p>inAns - Values of the 16 sensors</p>
+<dd><p>Firmware Router <code class="docutils literal notranslate"><span class="pre">105b</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.firmware_wifi">
 <span class="sig-name descname"><span class="pre">firmware_wifi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.firmware_wifi" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Firmware Wifi <code class="docutils literal notranslate"><span class="pre">105b</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.modele">
 <span class="sig-name descname"><span class="pre">modele</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.modele" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Router model MS_PV2_2d or MS_PV4_4d <code class="docutils literal notranslate"><span class="pre">MS_PV2_2d</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.out_balloon">
@@ -672,8 +721,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.outstat">
 <span class="sig-name descname"><span class="pre">outstat</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.outstat" title="Link to this definition"></a></dt>
-<dd><p>cptVals - Values of the 8 counters in hexadecimal</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.power_home">
@@ -713,23 +761,26 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.rssi_quality">
 <span class="sig-name descname"><span class="pre">rssi_quality</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.rssi_quality" title="Link to this definition"></a></dt>
-<dd><p>paramSys - System information</p>
+<dd><p>Wifi Received Signal Strength Indication in dbm [-100 dBm (weak signal) to 0 dBm (strong signal)] <code class="docutils literal notranslate"><span class="pre">-80</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.rssi_value">
 <span class="sig-name descname"><span class="pre">rssi_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.rssi_value" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Wifi Received Signal Strength Indication value in % [0 to 100] <code class="docutils literal notranslate"><span class="pre">40</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.sd_delay">
 <span class="sig-name descname"><span class="pre">sd_delay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.sd_delay" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Recording interval on SD - minutes and seconds <code class="docutils literal notranslate"><span class="pre">01:00</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.sd_save">
 <span class="sig-name descname"><span class="pre">sd_save</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.sd_save" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>SD recording On/Off <code class="docutils literal notranslate"><span class="pre">On</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.sensor_10">
@@ -759,8 +810,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.sensor_15">
 <span class="sig-name descname"><span class="pre">sensor_15</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.sensor_15" title="Link to this definition"></a></dt>
-<dd><p>survMm - Sensor monitoring</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.sensor_8">
@@ -775,13 +825,13 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.serial_number">
 <span class="sig-name descname"><span class="pre">serial_number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.serial_number" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Serial number <code class="docutils literal notranslate"><span class="pre">0000224</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.state_test_router_hight">
 <span class="sig-name descname"><span class="pre">state_test_router_hight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.state_test_router_hight" title="Link to this definition"></a></dt>
-<dd><p>outStat - Values of the 16 outputs</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.state_test_router_inject">
@@ -801,8 +851,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.survmm">
 <span class="sig-name descname"><span class="pre">survmm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.survmm" title="Link to this definition"></a></dt>
-<dd><p>cmdPos - Position of the 8 commands</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.temperature_balloon">
@@ -822,7 +871,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.time">
 <span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.time" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Time <code class="docutils literal notranslate"><span class="pre">16:03:53</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.total_consumption">
@@ -832,7 +882,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.data.MSunPVDataStatus.version">
 <span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.data.MSunPVDataStatus.version" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Project version <code class="docutils literal notranslate"><span class="pre">5.0.1</span></code></p>
+</dd></dl>
 
 </dd></dl>
 
@@ -894,6 +945,16 @@
 <p>MSunPV WebConnect library for Python.</p>
 <p>See: <a class="reference external" href="https://ard-tek.com/">https://ard-tek.com/</a></p>
 <p>Source: <a class="reference external" href="https://github.com/thanatos-vf-2000/msunpv">https://github.com/thanatos-vf-2000/msunpv</a></p>
+<p>Init MSunPV connection.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>session (ClientSession): aiohttp client session
+ip (str): Hostname or IP address of MSunPV 2*2 or 4*4</p>
+</dd>
+<dt>Raises:</dt><dd><p>KeyError: Hostname or IP address empty</p>
+</dd>
+</dl>
+</div></blockquote>
 <dl class="py class">
 <dt class="sig sig-object py" id="msunpv.webconnect.MSunPVWebConnect">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">msunpv.webconnect.</span></span><span class="sig-name descname"><span class="pre">MSunPVWebConnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ClientSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/msunpv/webconnect.html#MSunPVWebConnect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.webconnect.MSunPVWebConnect" title="Link to this definition"></a></dt>
@@ -902,19 +963,60 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.webconnect.MSunPVWebConnect.get_index">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/msunpv/webconnect.html#MSunPVWebConnect.get_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.webconnect.MSunPVWebConnect.get_index" title="Link to this definition"></a></dt>
-<dd><p>get index from PSunPV.</p>
+<dd><p>Get Index from MSunPV.
+Call HTTP URL: <a class="reference external" href="http:/">http:/</a>/&lt;IP_HOSTNAME&gt;/index.xml</p>
+<p>Args:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#msunpv.exceptions.MSunPVXMLDataException" title="msunpv.exceptions.MSunPVXMLDataException"><strong>MSunPVXMLDataException</strong></a> – XML data not valid from index.xml.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>class MSunPVDataIndex</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#msunpv.data.MSunPVDataIndex" title="msunpv.data.MSunPVDataIndex">MSunPVDataIndex</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.webconnect.MSunPVWebConnect.get_status">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/msunpv/webconnect.html#MSunPVWebConnect.get_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.webconnect.MSunPVWebConnect.get_status" title="Link to this definition"></a></dt>
-<dd><p>get Status from PSunPV.</p>
+<dd><p>Get Status from MSunPV.
+Call HTTP URL: <a class="reference external" href="http:/">http:/</a>/&lt;IP_HOSTNAME&gt;/status.xml</p>
+<p>Args:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#msunpv.exceptions.MSunPVXMLDataException" title="msunpv.exceptions.MSunPVXMLDataException"><strong>MSunPVXMLDataException</strong></a> – XML data not valid from status.xml.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>class MSunPVDataIndex</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#msunpv.data.MSunPVDataIndex" title="msunpv.data.MSunPVDataIndex">MSunPVDataIndex</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.webconnect.MSunPVWebConnect.refresh">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">refresh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'status.xml'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/msunpv/webconnect.html#MSunPVWebConnect.refresh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.webconnect.MSunPVWebConnect.refresh" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Get Index or Status from MSunPV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dataType</strong> (<em>str</em>) – status.xml (default) or index.xml</p>
+</dd>
+</dl>
+<p>Raises:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>class MSunPVDataIndex</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#msunpv.data.MSunPVDataIndex" title="msunpv.data.MSunPVDataIndex">MSunPVDataIndex</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -929,37 +1031,44 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.Command.cmdtxt">
 <span class="sig-name descname"><span class="pre">cmdtxt</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.Command.cmdtxt" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command Text label</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.Command.cmdtype">
 <span class="sig-name descname"><span class="pre">cmdtype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#msunpv.Command.cmdtype" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command Type</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.Command.cmdvalue">
 <span class="sig-name descname"><span class="pre">cmdvalue</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#msunpv.Command.cmdvalue" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command Value</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.Command.param1">
 <span class="sig-name descname"><span class="pre">param1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.Command.param1" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command parameter 1</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.Command.param2">
 <span class="sig-name descname"><span class="pre">param2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.Command.param2" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command parameter 2</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.Command.param3">
 <span class="sig-name descname"><span class="pre">param3</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.Command.param3" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command parameter 3</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.Command.param4">
 <span class="sig-name descname"><span class="pre">param4</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.Command.param4" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Command parameter 4</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -1021,7 +1130,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.date">
 <span class="sig-name descname"><span class="pre">date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataIndex.date" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Date <code class="docutils literal notranslate"><span class="pre">05/06/2025</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.firmware_router">
@@ -1032,12 +1142,14 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.firmware_wifi">
 <span class="sig-name descname"><span class="pre">firmware_wifi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataIndex.firmware_wifi" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Firmware Wifi <code class="docutils literal notranslate"><span class="pre">105b</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.modele">
 <span class="sig-name descname"><span class="pre">modele</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataIndex.modele" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Router model MS_PV2_2d or MS_PV4_4d <code class="docutils literal notranslate"><span class="pre">MS_PV2_2d</span></code></p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.output_type_txt">
@@ -1047,12 +1159,14 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.sd_delay">
 <span class="sig-name descname"><span class="pre">sd_delay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataIndex.sd_delay" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Recording interval on SD - minutes and seconds <code class="docutils literal notranslate"><span class="pre">01:00</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.sd_save">
 <span class="sig-name descname"><span class="pre">sd_save</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataIndex.sd_save" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>SD recording On/Off <code class="docutils literal notranslate"><span class="pre">On</span></code></p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.sensor_type_info">
@@ -1062,12 +1176,14 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.serial_number">
 <span class="sig-name descname"><span class="pre">serial_number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataIndex.serial_number" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Serial number <code class="docutils literal notranslate"><span class="pre">0000224</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.time">
 <span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataIndex.time" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Time <code class="docutils literal notranslate"><span class="pre">16:03:53</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.typans">
@@ -1083,7 +1199,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataIndex.version">
 <span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataIndex.version" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Project version <code class="docutils literal notranslate"><span class="pre">5.0.1</span></code></p>
+</dd></dl>
 
 </dd></dl>
 
@@ -1100,7 +1217,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.clock">
 <span class="sig-name descname"><span class="pre">clock</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.clock" title="Link to this definition"></a></dt>
-<dd><p>rssi - Wifi Received Signal Strength Indication</p>
+<dd><p>Time and Day (on two characters in French) <code class="docutils literal notranslate"><span class="pre">16:03:53</span> <span class="pre">ME</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1161,29 +1278,31 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.daily_radiator_consumption">
 <span class="sig-name descname"><span class="pre">daily_radiator_consumption</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.daily_radiator_consumption" title="Link to this definition"></a></dt>
-<dd><p>chOutVal - Values calculated at the output of the heating modules</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.date">
 <span class="sig-name descname"><span class="pre">date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.date" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Date <code class="docutils literal notranslate"><span class="pre">05/06/2025</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.firmware_router">
 <span class="sig-name descname"><span class="pre">firmware_router</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.firmware_router" title="Link to this definition"></a></dt>
-<dd><p>inAns - Values of the 16 sensors</p>
+<dd><p>Firmware Router <code class="docutils literal notranslate"><span class="pre">105b</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.firmware_wifi">
 <span class="sig-name descname"><span class="pre">firmware_wifi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.firmware_wifi" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Firmware Wifi <code class="docutils literal notranslate"><span class="pre">105b</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.modele">
 <span class="sig-name descname"><span class="pre">modele</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.modele" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Router model MS_PV2_2d or MS_PV4_4d <code class="docutils literal notranslate"><span class="pre">MS_PV2_2d</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.out_balloon">
@@ -1198,8 +1317,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.outstat">
 <span class="sig-name descname"><span class="pre">outstat</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.outstat" title="Link to this definition"></a></dt>
-<dd><p>cptVals - Values of the 8 counters in hexadecimal</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.power_home">
@@ -1239,23 +1357,26 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.rssi_quality">
 <span class="sig-name descname"><span class="pre">rssi_quality</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.rssi_quality" title="Link to this definition"></a></dt>
-<dd><p>paramSys - System information</p>
+<dd><p>Wifi Received Signal Strength Indication in dbm [-100 dBm (weak signal) to 0 dBm (strong signal)] <code class="docutils literal notranslate"><span class="pre">-80</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.rssi_value">
 <span class="sig-name descname"><span class="pre">rssi_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.rssi_value" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Wifi Received Signal Strength Indication value in % [0 to 100] <code class="docutils literal notranslate"><span class="pre">40</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.sd_delay">
 <span class="sig-name descname"><span class="pre">sd_delay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.sd_delay" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Recording interval on SD - minutes and seconds <code class="docutils literal notranslate"><span class="pre">01:00</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.sd_save">
 <span class="sig-name descname"><span class="pre">sd_save</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.sd_save" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>SD recording On/Off <code class="docutils literal notranslate"><span class="pre">On</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.sensor_10">
@@ -1285,8 +1406,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.sensor_15">
 <span class="sig-name descname"><span class="pre">sensor_15</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.sensor_15" title="Link to this definition"></a></dt>
-<dd><p>survMm - Sensor monitoring</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.sensor_8">
@@ -1301,13 +1421,13 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.serial_number">
 <span class="sig-name descname"><span class="pre">serial_number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.serial_number" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Serial number <code class="docutils literal notranslate"><span class="pre">0000224</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.state_test_router_hight">
 <span class="sig-name descname"><span class="pre">state_test_router_hight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.state_test_router_hight" title="Link to this definition"></a></dt>
-<dd><p>outStat - Values of the 16 outputs</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.state_test_router_inject">
@@ -1327,8 +1447,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.survmm">
 <span class="sig-name descname"><span class="pre">survmm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.survmm" title="Link to this definition"></a></dt>
-<dd><p>cmdPos - Position of the 8 commands</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.temperature_balloon">
@@ -1348,7 +1467,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.time">
 <span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.time" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Time <code class="docutils literal notranslate"><span class="pre">16:03:53</span></code></p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.total_consumption">
@@ -1358,7 +1478,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="msunpv.MSunPVDataStatus.version">
 <span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#msunpv.MSunPVDataStatus.version" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Project version <code class="docutils literal notranslate"><span class="pre">5.0.1</span></code></p>
+</dd></dl>
 
 </dd></dl>
 
@@ -1377,19 +1498,60 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.MSunPVWebConnect.get_index">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/msunpv/webconnect.html#MSunPVWebConnect.get_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.MSunPVWebConnect.get_index" title="Link to this definition"></a></dt>
-<dd><p>get index from PSunPV.</p>
+<dd><p>Get Index from MSunPV.
+Call HTTP URL: <a class="reference external" href="http:/">http:/</a>/&lt;IP_HOSTNAME&gt;/index.xml</p>
+<p>Args:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#msunpv.MSunPVXMLDataException" title="msunpv.MSunPVXMLDataException"><strong>MSunPVXMLDataException</strong></a> – XML data not valid from index.xml.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>class MSunPVDataIndex</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#msunpv.MSunPVDataIndex" title="msunpv.MSunPVDataIndex">MSunPVDataIndex</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.MSunPVWebConnect.get_status">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/msunpv/webconnect.html#MSunPVWebConnect.get_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.MSunPVWebConnect.get_status" title="Link to this definition"></a></dt>
-<dd><p>get Status from PSunPV.</p>
+<dd><p>Get Status from MSunPV.
+Call HTTP URL: <a class="reference external" href="http:/">http:/</a>/&lt;IP_HOSTNAME&gt;/status.xml</p>
+<p>Args:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#msunpv.MSunPVXMLDataException" title="msunpv.MSunPVXMLDataException"><strong>MSunPVXMLDataException</strong></a> – XML data not valid from status.xml.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>class MSunPVDataIndex</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#msunpv.MSunPVDataIndex" title="msunpv.MSunPVDataIndex">MSunPVDataIndex</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.MSunPVWebConnect.refresh">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">refresh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'status.xml'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/msunpv/webconnect.html#MSunPVWebConnect.refresh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.MSunPVWebConnect.refresh" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Get Index or Status from MSunPV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dataType</strong> (<em>str</em>) – status.xml (default) or index.xml</p>
+</dd>
+</dl>
+<p>Raises:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>class MSunPVDataIndex</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#msunpv.MSunPVDataIndex" title="msunpv.MSunPVDataIndex">MSunPVDataIndex</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

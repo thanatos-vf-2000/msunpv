@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>msunpv.webconnect &mdash; msunpv 0.1.2 documentation</title>
+  <title>msunpv.webconnect &mdash; msunpv 0.2.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=92734c54"></script>
+      <script src="../../_static/documentation_options.js?v=938c9ccc"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -76,6 +76,16 @@
 <span class="sd">See: https://ard-tek.com/</span>
 
 <span class="sd">Source: https://github.com/thanatos-vf-2000/msunpv</span>
+
+<span class="sd">Init MSunPV connection.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        session (ClientSession): aiohttp client session</span>
+<span class="sd">        ip (str): Hostname or IP address of MSunPV 2*2 or 4*4</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        KeyError: Hostname or IP address empty</span>
+<span class="sd">        </span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 
@@ -122,6 +132,7 @@
 <span class="sd">            KeyError: Hostname or IP address empty</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Init&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hostname or IP address empty&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ip</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
@@ -140,14 +151,16 @@
 <span class="sd">            method (str): HTTP method to use</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            MSunPVConnectionException: Connection to device failed</span>
+<span class="sd">            MSunPVConnectionException: File Not Found: Request to {ip}: {res_xml}!</span>
+<span class="sd">            MSunPVConnectionException: Server at {ip} disconnected {max_retries + 1} times.</span>
+<span class="sd">            MSunPVConnectionException: Could not connect to MSunPV at {ip}: {exc}.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: json returned by device</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         
-        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Sending </span><span class="si">%s</span><span class="s2"> request to </span><span class="si">%s</span><span class="s2"> page </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip</span><span class="p">,</span> <span class="n">xml_page</span><span class="p">)</span>
+        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Sending </span><span class="si">%s</span><span class="s2"> request to </span><span class="si">%s</span><span class="s2"> page </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip</span><span class="p">,</span> <span class="n">xml_page</span><span class="p">)</span>
 
         <span class="n">max_retries</span> <span class="o">=</span> <span class="mi">2</span>
         <span class="k">for</span> <span class="n">retry</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_retries</span><span class="p">):</span>
@@ -161,7 +174,7 @@
                     <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Received reply </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">res_xml</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">res_xml</span> <span class="o">==</span> <span class="s2">&quot;FileNotFound&quot;</span><span class="p">:</span>
                         <span class="k">raise</span> <span class="n">MSunPVConnectionException</span><span class="p">(</span>
-                            <span class="sa">f</span><span class="s2">&quot;Request to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_ip</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">res_xml</span><span class="si">}</span><span class="s2">!&quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;File Not Found: Request to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_ip</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">res_xml</span><span class="si">}</span><span class="s2">!&quot;</span>
                         <span class="p">)</span>
                     <span class="k">return</span> <span class="n">res_xml</span> <span class="ow">or</span> <span class="p">{}</span>
             <span class="k">except</span> <span class="p">(</span><span class="n">ExpatError</span><span class="p">):</span>
@@ -183,7 +196,7 @@
                 <span class="n">asyncio</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">TimeoutError</span><span class="p">,</span>
             <span class="p">)</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">MSunPVConnectionException</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Could not connect to MSunPV at </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_ip</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Could not connect to MSunPV at </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_ip</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">.&quot;</span>
                 <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span>
 
         <span class="k">return</span> <span class="p">{}</span>
@@ -191,8 +204,18 @@
 <div class="viewcode-block" id="MSunPVWebConnect.get_status">
 <a class="viewcode-back" href="../../msunpv.html#msunpv.webconnect.MSunPVWebConnect.get_status">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;get Status from PSunPV.       &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get Status from MSunPV.</span>
+<span class="sd">        Call HTTP URL: http://&lt;IP_HOSTNAME&gt;/status.xml</span>
 
+<span class="sd">        Args:</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            MSunPVXMLDataException: XML data not valid from status.xml.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            MSunPVDataIndex: class MSunPVDataIndex</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Get Status on </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip</span><span class="p">)</span>
         <span class="n">data_xml</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span>  <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="n">hdrs</span><span class="o">.</span><span class="n">METH_GET</span><span class="p">,</span> <span class="s2">&quot;status.xml&quot;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">data_xml</span><span class="p">)</span>
@@ -207,8 +230,19 @@
 <div class="viewcode-block" id="MSunPVWebConnect.get_index">
 <a class="viewcode-back" href="../../msunpv.html#msunpv.webconnect.MSunPVWebConnect.get_index">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_index</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;get index from PSunPV.       &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get Index from MSunPV.</span>
+<span class="sd">        Call HTTP URL: http://&lt;IP_HOSTNAME&gt;/index.xml</span>
 
+<span class="sd">        Args:</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            MSunPVXMLDataException: XML data not valid from index.xml.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            MSunPVDataIndex: class MSunPVDataIndex</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Get index on </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip</span><span class="p">)</span>
         <span class="n">data_xml</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span>  <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="n">hdrs</span><span class="o">.</span><span class="n">METH_GET</span><span class="p">,</span> <span class="s2">&quot;index.xml&quot;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">data_xml</span><span class="p">)</span>
@@ -223,6 +257,18 @@
 <div class="viewcode-block" id="MSunPVWebConnect.refresh">
 <a class="viewcode-back" href="../../msunpv.html#msunpv.webconnect.MSunPVWebConnect.refresh">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataType</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;status.xml&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get Index or Status from MSunPV.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dataType (str): status.xml (default) or index.xml</span>
+
+<span class="sd">        Raises:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            MSunPVDataIndex: class MSunPVDataIndex</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Refresh data </span><span class="si">%s</span><span class="s2"> on </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">dataType</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">dataType</span> <span class="o">==</span> <span class="s2">&quot;status.xml&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_status</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>

@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>msunpv.data &mdash; msunpv 0.1.2 documentation</title>
+  <title>msunpv.data &mdash; msunpv 0.2.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=92734c54"></script>
+      <script src="../../_static/documentation_options.js?v=938c9ccc"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -80,8 +80,6 @@
 
 <span class="n">_LOG</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-
-
 <span class="k">def</span><span class="w"> </span><span class="nf">_hex2int</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Hex string to signed integer.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">:</span>
@@ -90,15 +88,17 @@
     <span class="n">bits</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">uintval</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">uintval</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="n">bits</span><span class="p">)</span> <span class="o">-</span> <span class="n">uintval</span><span class="p">))</span>
+    <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;_hex2int - Hex string: to signed integer: </span><span class="si">%s</span><span class="s2"> =&gt; </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">uintval</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">uintval</span>
 
 <div class="viewcode-block" id="GenericType">
 <a class="viewcode-back" href="../../msunpv.html#msunpv.data.GenericType">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GenericType</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">dotpos</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="nb">type</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generic Type for Sensor and Counter&quot;&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>       <span class="c1">#: Name</span>
+    <span class="n">dotpos</span><span class="p">:</span> <span class="nb">int</span>     <span class="c1">#: N/A</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">int</span>       <span class="c1">#: Type of Sensor Or Counter (MsunPV internal type)</span>
+    <span class="n">suffix</span><span class="p">:</span> <span class="nb">str</span>     <span class="c1">#: suffix or unit</span></div>
 
 
 <div class="viewcode-block" id="SensorType">
@@ -118,27 +118,49 @@
 <div class="viewcode-block" id="Command">
 <a class="viewcode-back" href="../../msunpv.html#msunpv.data.Command">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Command</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
-    <span class="n">cmdtype</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">cmdvalue</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">cmdtxt</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">param1</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">param2</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">param3</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">param4</span><span class="p">:</span> <span class="nb">str</span></div>
+    <span class="n">cmdtype</span><span class="p">:</span> <span class="nb">int</span>        <span class="c1">#: Command Type</span>
+    <span class="n">cmdvalue</span><span class="p">:</span> <span class="nb">int</span>       <span class="c1">#: Command Value</span>
+    <span class="n">cmdtxt</span><span class="p">:</span> <span class="nb">str</span>         <span class="c1">#: Command Text label</span>
+    <span class="n">param1</span><span class="p">:</span> <span class="nb">str</span>         <span class="c1">#: Command parameter 1</span>
+    <span class="n">param2</span><span class="p">:</span> <span class="nb">str</span>         <span class="c1">#: Command parameter 2</span>
+    <span class="n">param3</span><span class="p">:</span> <span class="nb">str</span>         <span class="c1">#: Command parameter 3</span>
+    <span class="n">param4</span><span class="p">:</span> <span class="nb">str</span>         <span class="c1">#: Command parameter 4</span></div>
 
 
 <div class="viewcode-block" id="MSunPVCommon">
 <a class="viewcode-back" href="../../msunpv.html#msunpv.data.MSunPVCommon">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">MSunPVCommon</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generic Class function used in MSunPVDataStatus and MSunPVDataIndex&quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="MSunPVCommon.get">
 <a class="viewcode-back" href="../../msunpv.html#msunpv.data.MSunPVCommon.get">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retourne la valeur d’un attribut si il existe, sinon None.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the value of an attribute if it exists, otherwise None.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            attribute (str): name of attribute (in lower case)</span>
+
+<span class="sd">        Raises:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Any: None or value of attribute</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - get attribute </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Affiche tous les attributs de l’objet sous forme de dictionnaire.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return all attributes of the object in str.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+
+<span class="sd">        Raises:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: attributes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - return all attribute.&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">attrs</span><span class="si">}</span><span class="s2">)&quot;</span></div>
 
@@ -148,25 +170,25 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">MSunPVDataStatus</span><span class="p">(</span><span class="n">MSunPVCommon</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to store MSunPV Status data to JSON.&quot;&quot;&quot;</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;rtcc - Clock&quot;&quot;&quot;</span>
-    <span class="n">clock</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="c1"># rtcc - Clock</span>
+    <span class="n">clock</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1">#: Time and Day (on two characters in French) ``16:03:53 ME``</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;rssi - Wifi Received Signal Strength Indication&quot;&quot;&quot;</span>
-    <span class="n">rssi_value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1"># %</span>
-    <span class="n">rssi_quality</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># dbm</span>
+    <span class="c1"># rssi - Wifi Received Signal Strength Indication</span>
+    <span class="n">rssi_value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1">#: Wifi Received Signal Strength Indication value in % [0 to 100] ``40``</span>
+    <span class="n">rssi_quality</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1">#: Wifi Received Signal Strength Indication in dbm [-100 dBm (weak signal) to 0 dBm (strong signal)] ``-80``</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;paramSys - System information&quot;&quot;&quot;</span>
-    <span class="n">time</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1"># Heure</span>
-    <span class="n">date</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1"># Date</span>
-    <span class="n">sd_save</span><span class="p">:</span> <span class="nb">str</span>            <span class="c1"># Enregistrement SD</span>
-    <span class="n">sd_delay</span><span class="p">:</span> <span class="nb">str</span>           <span class="c1"># Intervalle enregistrement</span>
-    <span class="n">modele</span><span class="p">:</span> <span class="nb">str</span>             <span class="c1"># Modele du routeur MS_PV2_2d MS_PV4_4d</span>
-    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span>            <span class="c1"># Version du projet</span>
-    <span class="n">serial_number</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1"># Numero de serie</span>
-    <span class="n">firmware_wifi</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1"># Firmware wifi</span>
-    <span class="n">firmware_router</span><span class="p">:</span> <span class="nb">str</span>    <span class="c1"># Firmware routeur</span>
+    <span class="c1">#paramSys - System information</span>
+    <span class="n">time</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1">#: Time ``16:03:53``</span>
+    <span class="n">date</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1">#: Date ``05/06/2025``</span>
+    <span class="n">sd_save</span><span class="p">:</span> <span class="nb">str</span>            <span class="c1">#: SD recording On/Off ``On``</span>
+    <span class="n">sd_delay</span><span class="p">:</span> <span class="nb">str</span>           <span class="c1">#: Recording interval on SD - minutes and seconds ``01:00``</span>
+    <span class="n">modele</span><span class="p">:</span> <span class="nb">str</span>             <span class="c1">#: Router model MS_PV2_2d or MS_PV4_4d ``MS_PV2_2d``</span>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span>            <span class="c1">#: Project version ``5.0.1``</span>
+    <span class="n">serial_number</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1">#: Serial number ``0000224``</span>
+    <span class="n">firmware_wifi</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1">#: Firmware Wifi ``105b``</span>
+    <span class="n">firmware_router</span><span class="p">:</span> <span class="nb">str</span>    <span class="c1">#: Firmware Router ``105b``</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;inAns - Values of the 16 sensors&quot;&quot;&quot;</span>
+    <span class="c1">#inAns - Values of the 16 sensors</span>
     <span class="n">power_reso</span><span class="p">:</span> <span class="nb">float</span>           <span class="c1"># Power reso (EDF/ENEDIS/...)</span>
     <span class="n">power_pv_read</span><span class="p">:</span> <span class="nb">float</span>        <span class="c1"># power solar panel</span>
     <span class="n">power_pv_positive</span><span class="p">:</span> <span class="nb">float</span>    <span class="c1"># power solar panel - positive</span>
@@ -191,13 +213,13 @@
     <span class="n">sensor_14</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">sensor_15</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;survMm - Sensor monitoring&quot;&quot;&quot;</span>
+    <span class="c1">#survMm - Sensor monitoring</span>
     <span class="c1"># 0: no overflow</span>
     <span class="c1"># 1: maximum </span>
     <span class="c1"># 2: minimum overflow, or sensor disconnected.</span>
     <span class="n">survmm</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;cmdPos - Position of the 8 commands&quot;&quot;&quot;</span>
+    <span class="c1">#cmdPos - Position of the 8 commands</span>
     <span class="n">cmdpos</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 
     <span class="n">cmd_balloon_manuel</span><span class="p">:</span> <span class="nb">bool</span>
@@ -208,12 +230,12 @@
     <span class="n">state_test_router_zero</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">state_test_router_medium</span><span class="p">:</span> <span class="nb">bool</span>
     <span class="n">state_test_router_hight</span><span class="p">:</span> <span class="nb">bool</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;outStat - Values of the 16 outputs&quot;&quot;&quot;</span>
+    
+    <span class="c1">#outStat - Values of the 16 outputs</span>
     <span class="c1"># output from 0 to 100 %</span>
     <span class="n">outstat</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;cptVals - Values of the 8 counters in hexadecimal&quot;&quot;&quot;</span>
+    <span class="c1">#cptVals - Values of the 8 counters in hexadecimal</span>
     <span class="n">cptvals</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 
     <span class="n">daily_consumption</span><span class="p">:</span> <span class="nb">float</span>        <span class="c1"># in kWh</span>
@@ -226,7 +248,7 @@
     <span class="n">daily_balloon_consumption</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># Daily water heater consumption (Msunpv 4x4) in kWh</span>
     <span class="n">daily_radiator_consumption</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># Daily radiator consumption (Msunpv 4x4) in kWh</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;chOutVal - Values calculated at the output of the heating modules&quot;&quot;&quot;</span>
+    <span class="c1">#chOutVal - Values calculated at the output of the heating modules</span>
     <span class="n">choutval</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">data_xml</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -457,16 +479,16 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">MSunPVDataIndex</span><span class="p">(</span><span class="n">MSunPVCommon</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to store MSunPV Index data to JSON.&quot;&quot;&quot;</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;paramSys - System information&quot;&quot;&quot;</span>
-    <span class="n">time</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1"># Heure</span>
-    <span class="n">date</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1"># Date</span>
-    <span class="n">sd_save</span><span class="p">:</span> <span class="nb">str</span>            <span class="c1"># Enregistrement SD</span>
-    <span class="n">sd_delay</span><span class="p">:</span> <span class="nb">str</span>           <span class="c1"># Intervalle enregistrement</span>
-    <span class="n">modele</span><span class="p">:</span> <span class="nb">str</span>             <span class="c1"># Modele du routeur MS_PV2_2d MS_PV4_4d</span>
-    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span>            <span class="c1"># Version du projet</span>
-    <span class="n">serial_number</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1"># Numero de serie</span>
-    <span class="n">firmware_wifi</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1"># Firmware wifi</span>
-    <span class="n">firmware_router</span><span class="p">:</span> <span class="nb">str</span>    <span class="c1"># Firmware routeur</span>
+    <span class="c1">#paramSys - System information</span>
+    <span class="n">time</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1">#: Time ``16:03:53``</span>
+    <span class="n">date</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1">#: Date ``05/06/2025``</span>
+    <span class="n">sd_save</span><span class="p">:</span> <span class="nb">str</span>            <span class="c1">#: SD recording On/Off ``On``</span>
+    <span class="n">sd_delay</span><span class="p">:</span> <span class="nb">str</span>           <span class="c1">#: Recording interval on SD - minutes and seconds ``01:00``</span>
+    <span class="n">modele</span><span class="p">:</span> <span class="nb">str</span>             <span class="c1">#: Router model MS_PV2_2d or MS_PV4_4d ``MS_PV2_2d``</span>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span>            <span class="c1">#: Project version ``5.0.1``</span>
+    <span class="n">serial_number</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1">#: Serial number ``0000224``</span>
+    <span class="n">firmware_wifi</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1">#: Firmware Wifi ``105b``</span>
+    <span class="n">firmware_router</span><span class="p">:</span> <span class="nb">str</span>    <span class="c1">#: Firmware Router ``105b``</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;typAns - Type sensors&quot;&quot;&quot;</span>
     <span class="n">typans</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
