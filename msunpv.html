@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>msunpv package &mdash; msunpv 0.0.1 documentation</title>
+  <title>msunpv package &mdash; msunpv 0.1.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/documentation_options.js?v=92734c54"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -48,7 +48,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#msunpv-const-module">msunpv.const module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#msunpv-data-module">msunpv.data module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#msunpv-exceptions-module">msunpv.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-msunpv.exceptions">msunpv.exceptions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#msunpv.exceptions.MSunPVConnectionException"><code class="docutils literal notranslate"><span class="pre">MSunPVConnectionException</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msunpv.exceptions.MSunPVException"><code class="docutils literal notranslate"><span class="pre">MSunPVException</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#msunpv.exceptions.MSunPVXMLDataException"><code class="docutils literal notranslate"><span class="pre">MSunPVXMLDataException</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#msunpv-webconnect-module">msunpv.webconnect module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-contents">Module contents</a></li>
 </ul>
@@ -58,7 +63,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#msunpv-const-module">msunpv.const module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#msunpv-data-module">msunpv.data module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#msunpv-exceptions-module">msunpv.exceptions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-msunpv.exceptions">msunpv.exceptions module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.exceptions.MSunPVConnectionException"><code class="docutils literal notranslate"><span class="pre">MSunPVConnectionException</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.exceptions.MSunPVException"><code class="docutils literal notranslate"><span class="pre">MSunPVException</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.exceptions.MSunPVXMLDataException"><code class="docutils literal notranslate"><span class="pre">MSunPVXMLDataException</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#msunpv-webconnect-module">msunpv.webconnect module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-contents">Module contents</a></li>
 </ul>
@@ -103,8 +113,30 @@
 <section id="msunpv-data-module">
 <h2>msunpv.data module<a class="headerlink" href="#msunpv-data-module" title="Link to this heading"></a></h2>
 </section>
-<section id="msunpv-exceptions-module">
-<h2>msunpv.exceptions module<a class="headerlink" href="#msunpv-exceptions-module" title="Link to this heading"></a></h2>
+<section id="module-msunpv.exceptions">
+<span id="msunpv-exceptions-module"></span><h2>msunpv.exceptions module<a class="headerlink" href="#module-msunpv.exceptions" title="Link to this heading"></a></h2>
+<p>Exceptions for the MSunPV library.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="msunpv.exceptions.MSunPVConnectionException">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">msunpv.exceptions.</span></span><span class="sig-name descname"><span class="pre">MSunPVConnectionException</span></span><a class="reference internal" href="_modules/msunpv/exceptions.html#MSunPVConnectionException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.exceptions.MSunPVConnectionException" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#msunpv.exceptions.MSunPVException" title="msunpv.exceptions.MSunPVException"><code class="xref py py-class docutils literal notranslate"><span class="pre">MSunPVException</span></code></a></p>
+<p>An error occurred in the connection with the device.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="msunpv.exceptions.MSunPVException">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">msunpv.exceptions.</span></span><span class="sig-name descname"><span class="pre">MSunPVException</span></span><a class="reference internal" href="_modules/msunpv/exceptions.html#MSunPVException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.exceptions.MSunPVException" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Base exception of the pysma library.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="msunpv.exceptions.MSunPVXMLDataException">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">msunpv.exceptions.</span></span><span class="sig-name descname"><span class="pre">MSunPVXMLDataException</span></span><a class="reference internal" href="_modules/msunpv/exceptions.html#MSunPVXMLDataException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.exceptions.MSunPVXMLDataException" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#msunpv.exceptions.MSunPVException" title="msunpv.exceptions.MSunPVException"><code class="xref py py-class docutils literal notranslate"><span class="pre">MSunPVException</span></code></a></p>
+<p>XML Data Exception</p>
+</dd></dl>
+
 </section>
 <section id="msunpv-webconnect-module">
 <h2>msunpv.webconnect module<a class="headerlink" href="#msunpv-webconnect-module" title="Link to this heading"></a></h2>
