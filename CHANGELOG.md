@@ -6,6 +6,8 @@
  - Update README.md:
     * add Badges,
     * update content.
+ - Add comment on class, function and variable for Sphinx documentation.
+
 
 ## v0.1.1 and v0.1.2 (2025-11-11)
 - Add Workflow to create documentation in GitHub Pages [link](https://thanatos-vf-2000.github.io/msunpv/),

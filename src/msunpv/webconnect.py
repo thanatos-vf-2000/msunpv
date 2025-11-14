@@ -3,6 +3,16 @@
 See: https://ard-tek.com/
 
 Source: https://github.com/thanatos-vf-2000/msunpv
+
+Init MSunPV connection.
+
+    Args:
+        session (ClientSession): aiohttp client session
+        ip (str): Hostname or IP address of MSunPV 2*2 or 4*4
+
+    Raises:
+        KeyError: Hostname or IP address empty
+        
 """
 
 
@@ -47,6 +57,7 @@ class MSunPVWebConnect:
             KeyError: Hostname or IP address empty
 
         """
+        _LOG.debug("%s - Init", self.__class__.__name__)
         if ip is None:
             raise KeyError(f"Hostname or IP address empty")
         self._ip = ip.rstrip("/")
@@ -65,14 +76,16 @@ class MSunPVWebConnect:
             method (str): HTTP method to use
 
         Raises:
-            MSunPVConnectionException: Connection to device failed
+            MSunPVConnectionException: File Not Found: Request to {ip}: {res_xml}!
+            MSunPVConnectionException: Server at {ip} disconnected {max_retries + 1} times.
+            MSunPVConnectionException: Could not connect to MSunPV at {ip}: {exc}.
 
         Returns:
             dict: json returned by device
 
         """
         
-        _LOG.debug("Sending %s request to %s page %s.", method, self._ip, xml_page)
+        _LOG.debug("%s - Sending %s request to %s page %s.", self.__class__.__name__, method, self._ip, xml_page)
 
         max_retries = 2
         for retry in range(max_retries):
@@ -86,7 +99,7 @@ class MSunPVWebConnect:
                     _LOG.debug("Received reply %s", res_xml)
                     if res_xml == "FileNotFound":
                         raise MSunPVConnectionException(
-                            f"Request to {self._ip}: {res_xml}!"
+                            f"File Not Found: Request to {self._ip}: {res_xml}!"
                         )
                     return res_xml or {}
             except (ExpatError):
@@ -108,14 +121,24 @@ class MSunPVWebConnect:
                 asyncio.exceptions.TimeoutError,
             ) as exc:
                 raise MSunPVConnectionException(
-                    f"Could not connect to MSunPV at {self._ip}: {exc}"
+                    f"Could not connect to MSunPV at {self._ip}: {exc}."
                 ) from exc
 
         return {}
 
     async def get_status(self) -> bool:
-        """get Status from PSunPV.       """
+        """Get Status from MSunPV.
+        Call HTTP URL: http://<IP_HOSTNAME>/status.xml
 
+        Args:
+
+        Raises:
+            MSunPVXMLDataException: XML data not valid from status.xml.
+
+        Returns:
+            MSunPVDataIndex: class MSunPVDataIndex
+        """
+        _LOG.debug("%s - Get Status on %s", self.__class__.__name__, self._ip)
         data_xml: str =  await self._request(hdrs.METH_GET, "status.xml")
         try:
             ET.fromstring(data_xml)
@@ -127,8 +150,19 @@ class MSunPVWebConnect:
         return MSunPVDataStatus(data_xml)
     
     async def get_index(self) -> bool:
-        """get index from PSunPV.       """
+        """Get Index from MSunPV.
+        Call HTTP URL: http://<IP_HOSTNAME>/index.xml
 
+        Args:
+
+        Raises:
+            MSunPVXMLDataException: XML data not valid from index.xml.
+
+        Returns:
+            MSunPVDataIndex: class MSunPVDataIndex
+        """
+
+        _LOG.debug("%s - Get index on %s", self.__class__.__name__, self._ip)
         data_xml: str =  await self._request(hdrs.METH_GET, "index.xml")
         try:
             ET.fromstring(data_xml)
@@ -140,6 +174,18 @@ class MSunPVWebConnect:
         return MSunPVDataIndex(data_xml)
     
     async def refresh(self, dataType: str = "status.xml") -> bool:
+        """Get Index or Status from MSunPV.
+
+        Args:
+            dataType (str): status.xml (default) or index.xml
+
+        Raises:
+
+        Returns:
+            MSunPVDataIndex: class MSunPVDataIndex
+        """
+        
+        _LOG.debug("%s - Refresh data %s on %s", self.__class__.__name__, dataType, self._ip)
         if dataType == "status.xml":
             return await self.get_status()
         else:

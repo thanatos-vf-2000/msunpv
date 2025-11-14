@@ -7,8 +7,6 @@ from typing import Any, TypedDict
 
 _LOG = logging.getLogger(__name__)
 
-
-
 def _hex2int(val: str) -> int:
     """Hex string to signed integer."""
     if len(val) <= 4:
@@ -17,13 +15,15 @@ def _hex2int(val: str) -> int:
     bits = 4 * (len(val))
     if uintval >= 2 ** (bits - 1):
         uintval = int(0 - ((2**bits) - uintval))
+    _LOG.debug("_hex2int - Hex string: to signed integer: %s => %s", val, uintval)
     return uintval
 
 class GenericType(TypedDict):
-    name: str
-    dotpos: int
-    type: int
-    suffix: str
+    """Generic Type for Sensor and Counter"""
+    name: str       #: Name
+    dotpos: int     #: N/A
+    type: int       #: Type of Sensor Or Counter (MsunPV internal type)
+    suffix: str     #: suffix or unit
 
 class SensorType(GenericType):
     """Same structure as GenericType"""
@@ -34,46 +34,68 @@ class CounterType(GenericType):
     pass
 
 class Command(TypedDict):
-    cmdtype: int
-    cmdvalue: int
-    cmdtxt: str
-    param1: str
-    param2: str
-    param3: str
-    param4: str
+    cmdtype: int        #: Command Type
+    cmdvalue: int       #: Command Value
+    cmdtxt: str         #: Command Text label
+    param1: str         #: Command parameter 1
+    param2: str         #: Command parameter 2
+    param3: str         #: Command parameter 3
+    param4: str         #: Command parameter 4
 
 class MSunPVCommon:
+    """Generic Class function used in MSunPVDataStatus and MSunPVDataIndex"""
+
     def get(self, attribute: str) -> Any:
-        """Retourne la valeur d’un attribut si il existe, sinon None."""
+        """Returns the value of an attribute if it exists, otherwise None.
+
+        Args:
+            attribute (str): name of attribute (in lower case)
+
+        Raises:
+
+        Returns:
+            Any: None or value of attribute
+        """
+        _LOG.debug("%s - get attribute %s", self.__class__.__name__, attribute)
         return getattr(self, attribute, None)
 
     def __str__(self) -> str:
-        """Affiche tous les attributs de l’objet sous forme de dictionnaire."""
+        """Return all attributes of the object in str.
+        
+        Args:
+
+        Raises:
+
+        Returns:
+            str: attributes
+        """
+
+        _LOG.debug("%s - return all attribute.", self.__class__.__name__)
         attrs = {k: v for k, v in self.__dict__.items()}
         return f"{self.__class__.__name__}({attrs})"
 
 class MSunPVDataStatus(MSunPVCommon):
     """Class to store MSunPV Status data to JSON."""
 
-    """rtcc - Clock"""
-    clock: str
+    # rtcc - Clock
+    clock: str  #: Time and Day (on two characters in French) ``16:03:53 ME``
 
-    """rssi - Wifi Received Signal Strength Indication"""
-    rssi_value: int = 0     # %
-    rssi_quality: int = 0   # dbm
+    # rssi - Wifi Received Signal Strength Indication
+    rssi_value: int = 0     #: Wifi Received Signal Strength Indication value in % [0 to 100] ``40``
+    rssi_quality: int = 0   #: Wifi Received Signal Strength Indication in dbm [-100 dBm (weak signal) to 0 dBm (strong signal)] ``-80``
 
-    """paramSys - System information"""
-    time: str               # Heure
-    date: str               # Date
-    sd_save: str            # Enregistrement SD
-    sd_delay: str           # Intervalle enregistrement
-    modele: str             # Modele du routeur MS_PV2_2d MS_PV4_4d
-    version: str            # Version du projet
-    serial_number: str      # Numero de serie
-    firmware_wifi: str      # Firmware wifi
-    firmware_router: str    # Firmware routeur
+    #paramSys - System information
+    time: str               #: Time ``16:03:53``
+    date: str               #: Date ``05/06/2025``
+    sd_save: str            #: SD recording On/Off ``On``
+    sd_delay: str           #: Recording interval on SD - minutes and seconds ``01:00``
+    modele: str             #: Router model MS_PV2_2d or MS_PV4_4d ``MS_PV2_2d``
+    version: str            #: Project version ``5.0.1``
+    serial_number: str      #: Serial number ``0000224``
+    firmware_wifi: str      #: Firmware Wifi ``105b``
+    firmware_router: str    #: Firmware Router ``105b``
 
-    """inAns - Values of the 16 sensors"""
+    #inAns - Values of the 16 sensors
     power_reso: float           # Power reso (EDF/ENEDIS/...)
     power_pv_read: float        # power solar panel
     power_pv_positive: float    # power solar panel - positive
@@ -98,13 +120,13 @@ class MSunPVDataStatus(MSunPVCommon):
     sensor_14: float = 0
     sensor_15: float = 0
 
-    """survMm - Sensor monitoring"""
+    #survMm - Sensor monitoring
     # 0: no overflow
     # 1: maximum 
     # 2: minimum overflow, or sensor disconnected.
     survmm: list[int]
 
-    """cmdPos - Position of the 8 commands"""
+    #cmdPos - Position of the 8 commands
     cmdpos: list[str]
 
     cmd_balloon_manuel: bool
@@ -116,11 +138,11 @@ class MSunPVDataStatus(MSunPVCommon):
     state_test_router_medium: bool
     state_test_router_hight: bool
     
-    """outStat - Values of the 16 outputs"""
+    #outStat - Values of the 16 outputs
     # output from 0 to 100 %
     outstat: list[int]
 
-    """cptVals - Values of the 8 counters in hexadecimal"""
+    #cptVals - Values of the 8 counters in hexadecimal
     cptvals: list[str]
 
     daily_consumption: float        # in kWh
@@ -133,7 +155,7 @@ class MSunPVDataStatus(MSunPVCommon):
     daily_balloon_consumption: float  # Daily water heater consumption (Msunpv 4x4) in kWh
     daily_radiator_consumption: float  # Daily radiator consumption (Msunpv 4x4) in kWh
 
-    """chOutVal - Values calculated at the output of the heating modules"""
+    #chOutVal - Values calculated at the output of the heating modules
     choutval: list[str]
     
     def __init__(self,  data_xml: str) -> None:
@@ -361,16 +383,16 @@ class MSunPVDataStatus(MSunPVCommon):
 class MSunPVDataIndex(MSunPVCommon):
     """Class to store MSunPV Index data to JSON."""
 
-    """paramSys - System information"""
-    time: str               # Heure
-    date: str               # Date
-    sd_save: str            # Enregistrement SD
-    sd_delay: str           # Intervalle enregistrement
-    modele: str             # Modele du routeur MS_PV2_2d MS_PV4_4d
-    version: str            # Version du projet
-    serial_number: str      # Numero de serie
-    firmware_wifi: str      # Firmware wifi
-    firmware_router: str    # Firmware routeur
+    #paramSys - System information
+    time: str               #: Time ``16:03:53``
+    date: str               #: Date ``05/06/2025``
+    sd_save: str            #: SD recording On/Off ``On``
+    sd_delay: str           #: Recording interval on SD - minutes and seconds ``01:00``
+    modele: str             #: Router model MS_PV2_2d or MS_PV4_4d ``MS_PV2_2d``
+    version: str            #: Project version ``5.0.1``
+    serial_number: str      #: Serial number ``0000224``
+    firmware_wifi: str      #: Firmware Wifi ``105b``
+    firmware_router: str    #: Firmware Router ``105b``
 
     """typAns - Type sensors"""
     typans: list[str]

@@ -27,6 +27,11 @@ PYTHONPATH=./src/ python3 example.py <IP>
 
 This library can read information from MSunPV 2*2 or 4*4 simply by using the IP or hostname. The project is independent of ard-tek.
 
+## Help
+
+- If you pass an IP to the project as a parameter, verify that it is fixed, or if it is dynamic, ensure that your project manages it.
+
+
 ## Issues
 
 You can create issues in this repository to plan, discuss, and track work. Issues can track bug reports, new features and ideas, and anything else you need to write down or discuss. [➡️ Go to issues ⬅️](https://github.com/thanatos-vf-2000/msunpv/issues)
