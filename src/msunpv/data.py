@@ -96,70 +96,84 @@ class MSunPVDataStatus(MSunPVCommon):
     firmware_router: str    #: Firmware Router ``105b``
 
     #inAns - Values of the 16 sensors
-    power_reso: float           # Power reso (EDF/ENEDIS/...)
-    power_pv_read: float        # power solar panel
-    power_pv_positive: float    # power solar panel - positive
-    power_home: float           # Power home consumption
-    power_pv_inject: float      # power solar panel injected
-    power_pv_consumed: float    # power solar panel consumed
+    power_reso: float           #: Power reso (EDF/ENEDIS/Other) in W ``-49,6`` injection or ``49,6`` consumers
+    power_pv_read: float        #: power solar panel in W ``-0,6``
+    power_pv_positive: float    #: power solar panel in W - positive ``0,6``
+    power_home: float           #: Power home consumption in W ``49``
+    power_pv_inject: float      #: power solar panel injected in W ``49``
+    power_pv_consumed: float    #: power solar panel consumed in W ``49``
 
-    #                              MSPV_2_2d            /   MSPV_4_4d
-    out_balloon: float          # (0-400) -> (0-100%)   / Puissance en W
-    out_radiator: float         # (0-400) -> (0-100%)   / Puissance en W
+    #: Output Balloon
+    #:
+    #: * **MSPV_2_2d** – (0–400) → (0–100%) %, value ``5``
+    #: * **MSPV_4_4d** – Power en W, value ``20``
+    out_balloon: float
+    #: Output Radiator
+    #:
+    #: * **MSPV_2_2d** – (0–400) → (0–100%) %, value ``10``
+    #: * **MSPV_4_4d** – Power en W, value ``200``
+    out_radiator: float
 
-    temperature_balloon: float
-    temperature_radiator: float
-    temperature_room: float
+    temperature_balloon: float  #: Temperature Balloon in °C ``47``
+    temperature_radiator: float #: Temperature radiator in °C ``19``
+    temperature_room: float     #: Temperature room in °C ``21``
 
-    sensor_8: float = 0
-    sensor_9: float = 0
-    sensor_10: float = 0
-    sensor_11: float = 0
-    sensor_12: float = 0
-    sensor_13: float = 0
-    sensor_14: float = 0
-    sensor_15: float = 0
+    sensor_8: float = 0         #: Sensor 9 ``0``
+    sensor_9: float = 0         #: Sensor 10 ``0``
+    sensor_10: float = 0        #: Sensor 11 ``0``
+    sensor_11: float = 0        #: Sensor 12 ``0``
+    sensor_12: float = 0        #: Sensor 13 ``0``
+    sensor_13: float = 0        #: Sensor 14 ``0``
+    sensor_14: float = 0        #: Sensor 15 ``0``
+    sensor_15: float = 0        #: Sensor 16 ``0``
 
-    #survMm - Sensor monitoring
-    # 0: no overflow
-    # 1: maximum 
-    # 2: minimum overflow, or sensor disconnected.
+    #: Sensor monitoring ``0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;``
+    #:
+    #: * **0** - no overflow
+    #: * **1** - maximum 
+    #: * **2** - minimum overflow, or sensor disconnected.
     survmm: list[int]
 
-    #cmdPos - Position of the 8 commands
-    cmdpos: list[str]
-
-    cmd_balloon_manuel: bool
-    cmd_balloon_auto: bool
-    cmd_radiator_manuel: bool
-    cmd_radiator_auto: bool
-    state_test_router_inject: bool
-    state_test_router_zero: bool
-    state_test_router_medium: bool
-    state_test_router_hight: bool
     
-    #outStat - Values of the 16 outputs
-    # output from 0 to 100 %
-    outstat: list[int]
+    cmdpos: list[str]   #: Position of the 8 commands ``2;0;0;0;0;0;0;2;``
 
-    #cptVals - Values of the 8 counters in hexadecimal
-    cptvals: list[str]
+    cmd_balloon_manuel: bool            #: Command balloon manuel True/False ``False``
+    cmd_balloon_auto: bool              #: Command balloon auto True/False ``True``
+    cmd_radiator_manuel: bool           #: Command radiator manuel True/False ``False``
+    cmd_radiator_auto: bool             #: Command radiator auto True/False ``True``
+    state_test_router_inject: bool      #: State test router injection True/False ``False``
+    state_test_router_zero: bool        #: State test router zero True/False ``False``
+    state_test_router_medium: bool      #: State test router medium True/False ``False``
+    state_test_router_hight: bool       #: State test router hight True/False ``False``
+    
 
-    daily_consumption: float        # in kWh
-    daily_injection: float          # in kWh
-    daily_production: float         # in kWh
-    cumulative_production: float    # in kWh
-    production_daily_consumption: float  # Solar production consumed (PV - injection) in kWh
-    total_consumption: float  # Total consumption (grid + PV - injection) in kWh
+    outstat: list[int]  #: Values of the 16 outputs (0–100%) in % ``17;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;``
 
-    daily_balloon_consumption: float  # Daily water heater consumption (Msunpv 4x4) in kWh
-    daily_radiator_consumption: float  # Daily radiator consumption (Msunpv 4x4) in kWh
 
-    #chOutVal - Values calculated at the output of the heating modules
-    choutval: list[str]
+    cptvals: list[str]  #: Values of the 8 counters in hexadecimal ``9a02;ffffa128;ffffff69;ffffa560;0;0;0;0;``
+
+    daily_consumption: float                #: Daily consumption in kWh ``2``
+    daily_injection: float                  #: Daily injectionin kWh ``1``
+    daily_production: float                 #: Daily production in kWh  ``2``
+    cumulative_production: float            #: Cumulative production in kWh  ``258``
+    production_daily_consumption: float     #: Solar production consumed (PV - injection) in kWh  ``1``
+    total_consumption: float                #: Total consumption (grid + PV - injection) in kWh  ``7``
+
+    daily_balloon_consumption: float        #: Daily water heater consumption (Msunpv 4x4) in kWh ``1``
+    daily_radiator_consumption: float       #: Daily radiator consumption (Msunpv 4x4) in kWh ``1``
+
+    choutval: list[str]     #: Values calculated at the output of the heating modules ``0;0;0;ff;:0,0;0,0;0,0;0,0;``
     
     def __init__(self,  data_xml: str) -> None:
+        """Init MSunPVDataStatus.
 
+        Args:
+            data_xml (str): data retry
+
+        Raises:
+
+        """
+        
         data = xmltodict.parse(data_xml)
 
         _LOG.debug("Data keys= " + str(data["xml"].keys()))
@@ -318,10 +332,6 @@ class MSunPVDataStatus(MSunPVCommon):
             self.state_test_router_zero     = 0
             self.state_test_router_medium   = 0
             self.state_test_router_hight    = 0
-        
-        
-        
-
 
         #outStat - Values of the 16 outputs from 0 to 100%.
         #<outStat>17;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;</outStat>
@@ -353,8 +363,6 @@ class MSunPVDataStatus(MSunPVCommon):
             else:
                 self.daily_balloon_consumption  = 0
                 self.daily_radiator_consumption = 0
-            
-            
         else:
             _LOG.debug("%s - cptVals not found in data", self.__class__.__name__)
             self.cptvals = [0] * 8
@@ -367,7 +375,6 @@ class MSunPVDataStatus(MSunPVCommon):
         self.production_daily_consumption   = self.daily_production - self.daily_injection
         self.total_consumption              = self.daily_consumption + self.production_daily_consumption
         
-
         #chOutVal - Values calculated at the output of the heating modules.
         #<chOutVal>0;0;0;ff;:0,0;0,0;0,0;0,0;</chOutVal>
         if "chOutVal" in data["xml"]:
@@ -394,20 +401,24 @@ class MSunPVDataIndex(MSunPVCommon):
     firmware_wifi: str      #: Firmware Wifi ``105b``
     firmware_router: str    #: Firmware Router ``105b``
 
-    """typAns - Type sensors"""
-    typans: list[str]
+    typans: list[str]       #: Type sensors ``PowRéso;1;6:PowP.V;1;6:OutBal;0;3:OutRad;0;3:VoltRés;1;4:T_Bal1;1;18:T_SDB;1;18:T_Amb;1;18:S9;0;0:S10;0;0:S11;0;0:S12;0;0:S13;0;0:S14;0;0:S15;0;0:S16;0;0:``
 
-    """typouts - Type Output"""
-    typans: list[str]
+    typouts: list[str]      #: Type Output ``R_Bal1;0;2:Rad_SDB;0;2:A3;0;0:A4;0;0:A5;0;0:A6;0;0:A7;0;0:A8;0;0:A9;0;0:A10;0;0:A11;0;0:A12;0;0:A13;0;0:A14;0;0:A15;0;0:A16;0;0:``
 
-    """cmdM - Command"""
-    cmdm: list[str]
+    cmdm: list[str]         #: Command
 
-    """typCpt - Type compteur"""
-    typcpt: list[str]
+    typcpt: list[str]       #: Type compteur
 
     def __init__(self,  data_xml: str) -> None:
+        """Init MSunPVDataIndex.
 
+        Args:
+            data_xml (str): data retry
+
+        Raises:
+
+        """
+        
         data = xmltodict.parse(data_xml)
 
         #paramSys -  System information
@@ -480,6 +491,19 @@ class MSunPVDataIndex(MSunPVCommon):
         
 
     def __type_info(self, data: list, id: int = 0) -> GenericType:
+        """Type Sensor or other
+
+        Args:
+            data (list) : Data
+            id (int)    : id (default 0)
+
+        Raises:
+
+        Returns:
+            GenericType: Generic Type for id
+
+        """
+        
         name = ""
         dotpos = 0
         type = 0
@@ -545,19 +569,63 @@ class MSunPVDataIndex(MSunPVCommon):
         return field
 
     def sensor_type_info(self, id: int = 0) -> SensorType:
+        """Sensor information type
+
+        Args:
+            id (int)    : id (default 0)
+
+        Raises:
+
+        Returns:
+            SensorType: Sensor information
+
+        """
         return self.__type_info(self.typans,id)
     
     def counter_type_info(self, id: int = 0)-> CounterType:
+        """Counter information type
+
+        Args:
+            id (int)    : id (default 0)
+
+        Raises:
+
+        Returns:
+            CounterType: Counter information
+
+        """
         return self.__type_info(self.typcpt,id)
         
 
     def output_type_txt(self, id: int = 0) -> str:
+        """Output text
+
+        Args:
+            id (int)    : id (default 0)
+
+        Raises:
+
+        Returns:
+            str: text
+
+        """
         txt = ""
         if len(self.typouts[id]) > id:
             txt = self.typouts[id].split(";")[0]
         return txt
     
     def command_info(self, id: int = 0) -> Command:
+        """Command information
+
+        Args:
+            id (int)    : id (default 0)
+
+        Raises:
+
+        Returns:
+            Command
+
+        """
         cmdtype     = 0
         cmdvalue    = 0
         cmdtxt      = ""

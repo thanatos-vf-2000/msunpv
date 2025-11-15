@@ -2,7 +2,7 @@
 
 ![PyPI](https://img.shields.io/pypi/v/msunpv) ![TestPyPI](https://img.shields.io/badge/dynamic/json?label=TestPyPI&url=https%3A%2F%2Ftest.pypi.org%2Fpypi%2Fmsunpv%2Fjson&query=$.info.version) ![License](https://img.shields.io/pypi/l/msunpv) 
 
-[![Docs](https://img.shields.io/badge/docs-online-brightgreen)](https://hanatos-vf-2000.github.io/msinpv/) [![Workflow Status](https://github.com/thanatos-vf-2000/msunpv/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/thanatos-vf-2000/msunpv/actions)
+[![Docs](https://img.shields.io/badge/docs-online-brightgreen)](https://thanatos-vf-2000.github.io/msunpv/) [![Workflow Status](https://github.com/thanatos-vf-2000/msunpv/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/thanatos-vf-2000/msunpv/actions)
 
 ![Python Versions](https://img.shields.io/pypi/pyversions/msunpv)
 ![Downloads](https://img.shields.io/pypi/dm/msunpv)

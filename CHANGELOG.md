@@ -6,7 +6,9 @@
  - Update README.md:
     * add Badges,
     * update content.
- - Add comment on class, function and variable for Sphinx documentation.
+ - Add comment on class, function and variable for Sphinx documentation,
+ - Valid Python version 3.9 and upper,
+ - GitHub action: Workflow does not contain permissions.
 
 
 ## v0.1.1 and v0.1.2 (2025-11-11)

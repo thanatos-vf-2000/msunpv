@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main  # ou 'master' selon ton projet
+      
+permissions:
+  contents: write      # push, release
+  actions: read        # lire les actions
+  checks: write        # statut des checks CI
+  packages: write      # publier des packages
+  pull-requests: write # commenter les PR
 
 jobs:
   build-deploy:

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "msunpv"
-version = "0.2.0"
+version = "0.2.0.dev202511-01"
 authors = [
   { name="franck VANHOUCKE", email="vanhoucke.franck@free.fr" },
 ]

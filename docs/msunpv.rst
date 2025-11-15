@@ -1,6 +1,11 @@
 msunpv package
 ==============
 
+.. automodule:: msunpv
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 Submodules
 ----------
 
@@ -32,14 +37,6 @@ msunpv.webconnect module
 ------------------------
 
 .. automodule:: msunpv.webconnect
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
-Module contents
----------------
-
-.. automodule:: msunpv
    :members:
    :show-inheritance:
    :undoc-members:
