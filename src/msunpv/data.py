@@ -176,7 +176,7 @@ class MSunPVDataStatus(MSunPVCommon):
         
         data = xmltodict.parse(data_xml)
 
-        _LOG.debug("Data keys= " + str(data["xml"].keys()))
+        _LOG.debug("%s - Data keys= " + str(data["xml"].keys()),  self.__class__.__name__)
 
         # rtcc - Clock
         # <rtcc>16:03:53 ME</rtcc>
@@ -235,7 +235,7 @@ class MSunPVDataStatus(MSunPVCommon):
             self.power_reso         = float(vals[0])
             self.power_pv_read      = float(vals[1])
             self.power_pv_positive = 0.0 - float(vals[1])  # inverse to get it in positive
-            _LOG.debug("Sensor for %s", self.modele)
+            _LOG.debug("%s - Sensor for %s", self.__class__.__name__, self.modele)
             if self.modele == "MSPV_2_2d":
                 self.out_balloon    = round(float(vals[2]) / 4)  # (0-400) -> (0-100%)
                 self.out_radiator   = round(float(vals[3]) / 4)  # (0-400) -> (0-100%)
@@ -296,7 +296,7 @@ class MSunPVDataStatus(MSunPVCommon):
                 self.survmm = [int(x) for x in data["xml"]["survMm"].split(";") if x.strip() != ""]
                 self.survmm = (self.survmm + [0]*16)[:16]
             except ValueError:
-                _LOG.warning("Invalid values in survMm — use of default values.")
+                _LOG.warning("%s - Invalid values in survMm — use of default values.", self.__class__.__name__)
                 self.survmm = [0] * 16
         else:
             _LOG.debug("%s - survMm not found in data", self.__class__.__name__)
@@ -308,7 +308,7 @@ class MSunPVDataStatus(MSunPVCommon):
             try:
                 self.cmdpos = data["xml"]["cmdPos"].split(";")
             except ValueError:
-                _LOG.warning("Invalid values in cmdPos — use of default values.")
+                _LOG.warning("%s - Invalid values in cmdPos — use of default values.", self.__class__.__name__)
                 self.cmdpos = [0] * 8
             
             self.cmd_balloon_manuel     = (int(self.cmdpos[0]) & 0x01) != 0
@@ -340,7 +340,7 @@ class MSunPVDataStatus(MSunPVCommon):
                 self.outstat = [int(x) for x in data["xml"]["outStat"].split(";") if x.strip() != ""]
                 self.outstat = (self.outstat + [0]*16)[:16]
             except ValueError:
-                _LOG.warning("Invalid values in outStat — use of default values.")
+                _LOG.warning("%s - Invalid values in outStat — use of default values.", self.__class__.__name__)
                 self.outstat = [0] * 16
         else:
             _LOG.debug("%s - outStat not found in data", self.__class__.__name__)
@@ -352,7 +352,7 @@ class MSunPVDataStatus(MSunPVCommon):
             try:
                 self.cptvals = data["xml"]["cptVals"].split(";")
             except ValueError:
-                _LOG.warning("Invalid values in cptVals — use of default values.")
+                _LOG.warning("%s - Invalid values in cptVals — use of default values.", self.__class__.__name__)
             self.daily_consumption          = ( float(_hex2int(self.cptvals[0])) / 10000.0)
             self.daily_injection            = ( float(_hex2int(self.cptvals[1])) / -10000.0)
             self.daily_production           = ( float(_hex2int(self.cptvals[2])) / -10000.0)
@@ -381,7 +381,7 @@ class MSunPVDataStatus(MSunPVCommon):
             try:
                 self.choutvalchoutval = data["xml"]["chOutVal"].split(";")
             except ValueError:
-                _LOG.warning("Invalid values in chOutVal — use of default values.")
+                _LOG.warning("%s - Invalid values in chOutVal — use of default values.", self.__class__.__name__)
                 self.cptvals = [0] * 8
         else:
             _LOG.debug("%s - chOutVal not found in data", self.__class__.__name__)
@@ -560,6 +560,7 @@ class MSunPVDataIndex(MSunPVCommon):
         elif type == 25:
             suffix  = "lux"
 
+        _LOG.debug("%s - type info - Name: %s, Suffix: %s", self.__class__.__name__, name, suffix)
         field: GenericType = {
             "name": name,
             "dotpos": dotpos,

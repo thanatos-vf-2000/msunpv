@@ -54,12 +54,12 @@ class MSunPVWebConnect:
             ip (str): Hostname or IP address of MSunPV 2*2 or 4*4
 
         Raises:
-            KeyError: Hostname or IP address empty
+            MSunPVConnectionException: Hostname or IP address empty
 
         """
         _LOG.debug("%s - Init", self.__class__.__name__)
         if ip is None:
-            raise KeyError(f"Hostname or IP address empty")
+            raise MSunPVConnectionException(f"Hostname or IP address empty")
         self._ip = ip.rstrip("/")
         if not ip.startswith("http"):
             self._ip = "http://" + self._ip
@@ -139,13 +139,16 @@ class MSunPVWebConnect:
             MSunPVDataIndex: class MSunPVDataIndex
         """
         _LOG.debug("%s - Get Status on %s", self.__class__.__name__, self._ip)
-        data_xml: str =  await self._request(hdrs.METH_GET, "status.xml")
         try:
-            ET.fromstring(data_xml)
-        except ET.ParseError:
-            raise MSunPVXMLDataException(
-                    f"XML data not valid from status.xml."
-                )
+            data_xml: str =  await self._request(hdrs.METH_GET, "status.xml")
+            try:
+                ET.fromstring(data_xml)
+            except ET.ParseError:
+                raise MSunPVXMLDataException(
+                        f"XML data not valid from status.xml."
+                    )
+        except Exception as e:
+            raise MSunPVXMLDataException( f"{e}" )
 
         return MSunPVDataStatus(data_xml)
     
@@ -163,14 +166,16 @@ class MSunPVWebConnect:
         """
 
         _LOG.debug("%s - Get index on %s", self.__class__.__name__, self._ip)
-        data_xml: str =  await self._request(hdrs.METH_GET, "index.xml")
         try:
-            ET.fromstring(data_xml)
-        except ET.ParseError:
-            raise MSunPVXMLDataException(
-                    f"XML data not valid from index.xml."
-                )
-
+            data_xml: str =  await self._request(hdrs.METH_GET, "index.xml")
+            try:
+                ET.fromstring(data_xml)
+            except ET.ParseError:
+                raise MSunPVXMLDataException(
+                        f"XML data not valid from index.xml."
+                    )
+        except Exception as e:
+            raise MSunPVXMLDataException( f"{e}" )
         return MSunPVDataIndex(data_xml)
     
     async def refresh(self, dataType: str = "status.xml") -> bool:

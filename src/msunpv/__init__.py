@@ -8,6 +8,7 @@ from msunpv.exceptions import (
 
 from msunpv.webconnect import MSunPVWebConnect
 from msunpv.data import MSunPVDataIndex, MSunPVDataStatus, SensorType, CounterType, Command
+from msunpv.read import MSunPVRead
 
 __all__ = [
     "MSunPVWebConnect",
@@ -19,4 +20,5 @@ __all__ = [
     "SensorType",
     "CounterType",
     "Command",
+    "MSunPVRead",
 ]

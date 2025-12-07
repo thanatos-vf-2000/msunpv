@@ -11,7 +11,7 @@ import aiohttp
 
 from typing import Any
 
-from msunpv import exceptions, webconnect
+from msunpv import exceptions, webconnect, read
 
 _LOG = logging.getLogger(__name__)
 
@@ -19,6 +19,7 @@ VAR = {}
 
 async def main_loop(ip: str) -> None:
     """Run main loop."""
+    """
     async with aiohttp.ClientSession(
         connector=aiohttp.TCPConnector(ssl=False)
     ) as session:
@@ -64,6 +65,30 @@ async def main_loop(ip: str) -> None:
         
         finally:
             _LOG.info("Closing Session...")
+    """
+    _LOG.info("Start MSunPVRead...")
+    try:
+        reader = read.MSunPVRead(ip)
+        await reader.start()
+        try:
+            VAR["running"] = True
+            cnt = 5
+            while VAR.get("running"):
+                await reader.refresh_data()
+                cnt -= 1
+                print("Power reso: %s" % (reader.DataMSunPVDataStatus.get("power_reso")))
+                if cnt == 0:
+                    break
+                await reader.wait_for(10)
+        except Exception as e:
+            _LOG.warning("❌ Exception: %s", e)
+        finally:
+            await reader.stop()
+    except Exception as e:
+        _LOG.warning("❌ Exception: %s", e)
+        
+    finally:
+            _LOG.info("End MSunPVRead...")
 
 async def main() -> None:
     """Run example."""
