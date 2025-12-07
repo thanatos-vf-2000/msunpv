@@ -77,6 +77,7 @@
  | <a href="#D"><strong>D</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
@@ -85,6 +86,7 @@
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
  
 </div>
 <h2 id="C">C</h2>
@@ -230,8 +232,12 @@
         <li><a href="msunpv.html#msunpv.MSunPVDataStatus.daily_radiator_consumption">(msunpv.MSunPVDataStatus attribute)</a>
 </li>
       </ul></li>
+      <li><a href="msunpv.html#msunpv.MSunPVRead.DataMSunPVDataIndex">DataMSunPVDataIndex (msunpv.MSunPVRead attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="msunpv.html#msunpv.MSunPVRead.DataMSunPVDataStatus">DataMSunPVDataStatus (msunpv.MSunPVRead attribute)</a>
+</li>
       <li><a href="msunpv.html#msunpv.data.MSunPVDataIndex.date">date (msunpv.data.MSunPVDataIndex attribute)</a>
 
       <ul>
@@ -308,6 +314,18 @@
         <li><a href="msunpv.html#msunpv.webconnect.MSunPVWebConnect.get_status">(msunpv.webconnect.MSunPVWebConnect method)</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="msunpv.html#msunpv.MSunPVRead.last_read_td">last_read_td (msunpv.MSunPVRead attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="msunpv.html#msunpv.MSunPVRead.last_read_ti">last_read_ti (msunpv.MSunPVRead attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -393,6 +411,8 @@
 </li>
       </ul></li>
       <li><a href="msunpv.html#msunpv.MSunPVException">MSunPVException</a>, <a href="msunpv.html#msunpv.exceptions.MSunPVException">[1]</a>
+</li>
+      <li><a href="msunpv.html#msunpv.MSunPVRead">MSunPVRead (class in msunpv)</a>
 </li>
       <li><a href="msunpv.html#msunpv.MSunPVWebConnect">MSunPVWebConnect (class in msunpv)</a>
 
@@ -538,14 +558,16 @@
         <li><a href="msunpv.html#msunpv.webconnect.MSunPVWebConnect.refresh">(msunpv.webconnect.MSunPVWebConnect method)</a>
 </li>
       </ul></li>
+      <li><a href="msunpv.html#msunpv.MSunPVRead.refresh_data">refresh_data() (msunpv.MSunPVRead method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="msunpv.html#msunpv.data.MSunPVDataStatus.rssi_quality">rssi_quality (msunpv.data.MSunPVDataStatus attribute)</a>
 
       <ul>
         <li><a href="msunpv.html#msunpv.MSunPVDataStatus.rssi_quality">(msunpv.MSunPVDataStatus attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="msunpv.html#msunpv.data.MSunPVDataStatus.rssi_value">rssi_value (msunpv.data.MSunPVDataStatus attribute)</a>
 
       <ul>
@@ -650,6 +672,8 @@
         <li><a href="msunpv.html#msunpv.MSunPVDataStatus.serial_number">(msunpv.MSunPVDataStatus attribute)</a>
 </li>
       </ul></li>
+      <li><a href="msunpv.html#msunpv.MSunPVRead.start">start() (msunpv.MSunPVRead method)</a>
+</li>
       <li><a href="msunpv.html#msunpv.data.MSunPVDataStatus.state_test_router_hight">state_test_router_hight (msunpv.data.MSunPVDataStatus attribute)</a>
 
       <ul>
@@ -674,6 +698,8 @@
         <li><a href="msunpv.html#msunpv.MSunPVDataStatus.state_test_router_zero">(msunpv.MSunPVDataStatus attribute)</a>
 </li>
       </ul></li>
+      <li><a href="msunpv.html#msunpv.MSunPVRead.stop">stop() (msunpv.MSunPVRead method)</a>
+</li>
       <li><a href="msunpv.html#msunpv.CounterType.suffix">suffix (msunpv.CounterType attribute)</a>
 
       <ul>
@@ -726,14 +752,14 @@
         <li><a href="msunpv.html#msunpv.MSunPVDataStatus.time">(msunpv.MSunPVDataStatus attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="msunpv.html#msunpv.data.MSunPVDataStatus.total_consumption">total_consumption (msunpv.data.MSunPVDataStatus attribute)</a>
 
       <ul>
         <li><a href="msunpv.html#msunpv.MSunPVDataStatus.total_consumption">(msunpv.MSunPVDataStatus attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="msunpv.html#msunpv.data.MSunPVDataIndex.typans">typans (msunpv.data.MSunPVDataIndex attribute)</a>
 
       <ul>
@@ -758,6 +784,12 @@
         <li><a href="msunpv.html#msunpv.SensorType.type">(msunpv.SensorType attribute)</a>
 </li>
       </ul></li>
+      <li><a href="msunpv.html#msunpv.data.MSunPVDataIndex.typouts">typouts (msunpv.data.MSunPVDataIndex attribute)</a>
+
+      <ul>
+        <li><a href="msunpv.html#msunpv.MSunPVDataIndex.typouts">(msunpv.MSunPVDataIndex attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -774,6 +806,14 @@
         <li><a href="msunpv.html#msunpv.MSunPVDataStatus.version">(msunpv.MSunPVDataStatus attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="msunpv.html#msunpv.MSunPVRead.wait_for">wait_for() (msunpv.MSunPVRead method)</a>
+</li>
   </ul></td>
 </tr></table>
 

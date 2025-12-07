@@ -92,7 +92,7 @@
     <span class="k">return</span> <span class="n">uintval</span>
 
 <div class="viewcode-block" id="GenericType">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.GenericType">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.GenericType">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GenericType</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generic Type for Sensor and Counter&quot;&quot;&quot;</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>       <span class="c1">#: Name</span>
@@ -102,21 +102,21 @@
 
 
 <div class="viewcode-block" id="SensorType">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.SensorType">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.SensorType">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SensorType</span><span class="p">(</span><span class="n">GenericType</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Same structure as GenericType&quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="CounterType">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.CounterType">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.CounterType">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CounterType</span><span class="p">(</span><span class="n">GenericType</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Same structure as GenericType&quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="Command">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.Command">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.Command">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Command</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
     <span class="n">cmdtype</span><span class="p">:</span> <span class="nb">int</span>        <span class="c1">#: Command Type</span>
     <span class="n">cmdvalue</span><span class="p">:</span> <span class="nb">int</span>       <span class="c1">#: Command Value</span>
@@ -128,12 +128,12 @@
 
 
 <div class="viewcode-block" id="MSunPVCommon">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.MSunPVCommon">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.MSunPVCommon">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">MSunPVCommon</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generic Class function used in MSunPVDataStatus and MSunPVDataIndex&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="MSunPVCommon.get">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.MSunPVCommon.get">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.MSunPVCommon.get">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the value of an attribute if it exists, otherwise None.</span>
 
@@ -166,7 +166,7 @@
 
 
 <div class="viewcode-block" id="MSunPVDataStatus">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.MSunPVDataStatus">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.MSunPVDataStatus">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">MSunPVDataStatus</span><span class="p">(</span><span class="n">MSunPVCommon</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to store MSunPV Status data to JSON.&quot;&quot;&quot;</span>
 
@@ -189,73 +189,87 @@
     <span class="n">firmware_router</span><span class="p">:</span> <span class="nb">str</span>    <span class="c1">#: Firmware Router ``105b``</span>
 
     <span class="c1">#inAns - Values of the 16 sensors</span>
-    <span class="n">power_reso</span><span class="p">:</span> <span class="nb">float</span>           <span class="c1"># Power reso (EDF/ENEDIS/...)</span>
-    <span class="n">power_pv_read</span><span class="p">:</span> <span class="nb">float</span>        <span class="c1"># power solar panel</span>
-    <span class="n">power_pv_positive</span><span class="p">:</span> <span class="nb">float</span>    <span class="c1"># power solar panel - positive</span>
-    <span class="n">power_home</span><span class="p">:</span> <span class="nb">float</span>           <span class="c1"># Power home consumption</span>
-    <span class="n">power_pv_inject</span><span class="p">:</span> <span class="nb">float</span>      <span class="c1"># power solar panel injected</span>
-    <span class="n">power_pv_consumed</span><span class="p">:</span> <span class="nb">float</span>    <span class="c1"># power solar panel consumed</span>
+    <span class="n">power_reso</span><span class="p">:</span> <span class="nb">float</span>           <span class="c1">#: Power reso (EDF/ENEDIS/Other) in W ``-49,6`` injection or ``49,6`` consumers</span>
+    <span class="n">power_pv_read</span><span class="p">:</span> <span class="nb">float</span>        <span class="c1">#: power solar panel in W ``-0,6``</span>
+    <span class="n">power_pv_positive</span><span class="p">:</span> <span class="nb">float</span>    <span class="c1">#: power solar panel in W - positive ``0,6``</span>
+    <span class="n">power_home</span><span class="p">:</span> <span class="nb">float</span>           <span class="c1">#: Power home consumption in W ``49``</span>
+    <span class="n">power_pv_inject</span><span class="p">:</span> <span class="nb">float</span>      <span class="c1">#: power solar panel injected in W ``49``</span>
+    <span class="n">power_pv_consumed</span><span class="p">:</span> <span class="nb">float</span>    <span class="c1">#: power solar panel consumed in W ``49``</span>
 
-    <span class="c1">#                              MSPV_2_2d            /   MSPV_4_4d</span>
-    <span class="n">out_balloon</span><span class="p">:</span> <span class="nb">float</span>          <span class="c1"># (0-400) -&gt; (0-100%)   / Puissance en W</span>
-    <span class="n">out_radiator</span><span class="p">:</span> <span class="nb">float</span>         <span class="c1"># (0-400) -&gt; (0-100%)   / Puissance en W</span>
+    <span class="c1">#: Output Balloon</span>
+    <span class="c1">#:</span>
+    <span class="c1">#: * **MSPV_2_2d** – (0–400) → (0–100%) %, value ``5``</span>
+    <span class="c1">#: * **MSPV_4_4d** – Power en W, value ``20``</span>
+    <span class="n">out_balloon</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="c1">#: Output Radiator</span>
+    <span class="c1">#:</span>
+    <span class="c1">#: * **MSPV_2_2d** – (0–400) → (0–100%) %, value ``10``</span>
+    <span class="c1">#: * **MSPV_4_4d** – Power en W, value ``200``</span>
+    <span class="n">out_radiator</span><span class="p">:</span> <span class="nb">float</span>
 
-    <span class="n">temperature_balloon</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">temperature_radiator</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">temperature_room</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">temperature_balloon</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1">#: Temperature Balloon in °C ``47``</span>
+    <span class="n">temperature_radiator</span><span class="p">:</span> <span class="nb">float</span> <span class="c1">#: Temperature radiator in °C ``19``</span>
+    <span class="n">temperature_room</span><span class="p">:</span> <span class="nb">float</span>     <span class="c1">#: Temperature room in °C ``21``</span>
 
-    <span class="n">sensor_8</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">sensor_9</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">sensor_10</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">sensor_11</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">sensor_12</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">sensor_13</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">sensor_14</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">sensor_15</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">sensor_8</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>         <span class="c1">#: Sensor 9 ``0``</span>
+    <span class="n">sensor_9</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>         <span class="c1">#: Sensor 10 ``0``</span>
+    <span class="n">sensor_10</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1">#: Sensor 11 ``0``</span>
+    <span class="n">sensor_11</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1">#: Sensor 12 ``0``</span>
+    <span class="n">sensor_12</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1">#: Sensor 13 ``0``</span>
+    <span class="n">sensor_13</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1">#: Sensor 14 ``0``</span>
+    <span class="n">sensor_14</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1">#: Sensor 15 ``0``</span>
+    <span class="n">sensor_15</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1">#: Sensor 16 ``0``</span>
 
-    <span class="c1">#survMm - Sensor monitoring</span>
-    <span class="c1"># 0: no overflow</span>
-    <span class="c1"># 1: maximum </span>
-    <span class="c1"># 2: minimum overflow, or sensor disconnected.</span>
+    <span class="c1">#: Sensor monitoring ``0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;``</span>
+    <span class="c1">#:</span>
+    <span class="c1">#: * **0** - no overflow</span>
+    <span class="c1">#: * **1** - maximum </span>
+    <span class="c1">#: * **2** - minimum overflow, or sensor disconnected.</span>
     <span class="n">survmm</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
 
-    <span class="c1">#cmdPos - Position of the 8 commands</span>
-    <span class="n">cmdpos</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
-
-    <span class="n">cmd_balloon_manuel</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">cmd_balloon_auto</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">cmd_radiator_manuel</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">cmd_radiator_auto</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">state_test_router_inject</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">state_test_router_zero</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">state_test_router_medium</span><span class="p">:</span> <span class="nb">bool</span>
-    <span class="n">state_test_router_hight</span><span class="p">:</span> <span class="nb">bool</span>
     
-    <span class="c1">#outStat - Values of the 16 outputs</span>
-    <span class="c1"># output from 0 to 100 %</span>
-    <span class="n">outstat</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">cmdpos</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>   <span class="c1">#: Position of the 8 commands ``2;0;0;0;0;0;0;2;``</span>
 
-    <span class="c1">#cptVals - Values of the 8 counters in hexadecimal</span>
-    <span class="n">cptvals</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">cmd_balloon_manuel</span><span class="p">:</span> <span class="nb">bool</span>            <span class="c1">#: Command balloon manuel True/False ``False``</span>
+    <span class="n">cmd_balloon_auto</span><span class="p">:</span> <span class="nb">bool</span>              <span class="c1">#: Command balloon auto True/False ``True``</span>
+    <span class="n">cmd_radiator_manuel</span><span class="p">:</span> <span class="nb">bool</span>           <span class="c1">#: Command radiator manuel True/False ``False``</span>
+    <span class="n">cmd_radiator_auto</span><span class="p">:</span> <span class="nb">bool</span>             <span class="c1">#: Command radiator auto True/False ``True``</span>
+    <span class="n">state_test_router_inject</span><span class="p">:</span> <span class="nb">bool</span>      <span class="c1">#: State test router injection True/False ``False``</span>
+    <span class="n">state_test_router_zero</span><span class="p">:</span> <span class="nb">bool</span>        <span class="c1">#: State test router zero True/False ``False``</span>
+    <span class="n">state_test_router_medium</span><span class="p">:</span> <span class="nb">bool</span>      <span class="c1">#: State test router medium True/False ``False``</span>
+    <span class="n">state_test_router_hight</span><span class="p">:</span> <span class="nb">bool</span>       <span class="c1">#: State test router hight True/False ``False``</span>
+    
 
-    <span class="n">daily_consumption</span><span class="p">:</span> <span class="nb">float</span>        <span class="c1"># in kWh</span>
-    <span class="n">daily_injection</span><span class="p">:</span> <span class="nb">float</span>          <span class="c1"># in kWh</span>
-    <span class="n">daily_production</span><span class="p">:</span> <span class="nb">float</span>         <span class="c1"># in kWh</span>
-    <span class="n">cumulative_production</span><span class="p">:</span> <span class="nb">float</span>    <span class="c1"># in kWh</span>
-    <span class="n">production_daily_consumption</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># Solar production consumed (PV - injection) in kWh</span>
-    <span class="n">total_consumption</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># Total consumption (grid + PV - injection) in kWh</span>
+    <span class="n">outstat</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>  <span class="c1">#: Values of the 16 outputs (0–100%) in % ``17;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;``</span>
 
-    <span class="n">daily_balloon_consumption</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># Daily water heater consumption (Msunpv 4x4) in kWh</span>
-    <span class="n">daily_radiator_consumption</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># Daily radiator consumption (Msunpv 4x4) in kWh</span>
 
-    <span class="c1">#chOutVal - Values calculated at the output of the heating modules</span>
-    <span class="n">choutval</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">cptvals</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>  <span class="c1">#: Values of the 8 counters in hexadecimal ``9a02;ffffa128;ffffff69;ffffa560;0;0;0;0;``</span>
+
+    <span class="n">daily_consumption</span><span class="p">:</span> <span class="nb">float</span>                <span class="c1">#: Daily consumption in kWh ``2``</span>
+    <span class="n">daily_injection</span><span class="p">:</span> <span class="nb">float</span>                  <span class="c1">#: Daily injectionin kWh ``1``</span>
+    <span class="n">daily_production</span><span class="p">:</span> <span class="nb">float</span>                 <span class="c1">#: Daily production in kWh  ``2``</span>
+    <span class="n">cumulative_production</span><span class="p">:</span> <span class="nb">float</span>            <span class="c1">#: Cumulative production in kWh  ``258``</span>
+    <span class="n">production_daily_consumption</span><span class="p">:</span> <span class="nb">float</span>     <span class="c1">#: Solar production consumed (PV - injection) in kWh  ``1``</span>
+    <span class="n">total_consumption</span><span class="p">:</span> <span class="nb">float</span>                <span class="c1">#: Total consumption (grid + PV - injection) in kWh  ``7``</span>
+
+    <span class="n">daily_balloon_consumption</span><span class="p">:</span> <span class="nb">float</span>        <span class="c1">#: Daily water heater consumption (Msunpv 4x4) in kWh ``1``</span>
+    <span class="n">daily_radiator_consumption</span><span class="p">:</span> <span class="nb">float</span>       <span class="c1">#: Daily radiator consumption (Msunpv 4x4) in kWh ``1``</span>
+
+    <span class="n">choutval</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>     <span class="c1">#: Values calculated at the output of the heating modules ``0;0;0;ff;:0,0;0,0;0,0;0,0;``</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">data_xml</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Init MSunPVDataStatus.</span>
 
+<span class="sd">        Args:</span>
+<span class="sd">            data_xml (str): data retry</span>
+
+<span class="sd">        Raises:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        
         <span class="n">data</span> <span class="o">=</span> <span class="n">xmltodict</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">data_xml</span><span class="p">)</span>
 
-        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Data keys= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;xml&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Data keys= &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;xml&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>  <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
 
         <span class="c1"># rtcc - Clock</span>
         <span class="c1"># &lt;rtcc&gt;16:03:53 ME&lt;/rtcc&gt;</span>
@@ -314,7 +328,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">power_reso</span>         <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">power_pv_read</span>      <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">power_pv_positive</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># inverse to get it in positive</span>
-            <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Sensor for </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">modele</span><span class="p">)</span>
+            <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Sensor for </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">modele</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">modele</span> <span class="o">==</span> <span class="s2">&quot;MSPV_2_2d&quot;</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">out_balloon</span>    <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># (0-400) -&gt; (0-100%)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">out_radiator</span>   <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># (0-400) -&gt; (0-100%)</span>
@@ -375,7 +389,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">survmm</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;xml&quot;</span><span class="p">][</span><span class="s2">&quot;survMm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">survmm</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">survmm</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">16</span><span class="p">)[:</span><span class="mi">16</span><span class="p">]</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="n">_LOG</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Invalid values in survMm — use of default values.&quot;</span><span class="p">)</span>
+                <span class="n">_LOG</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Invalid values in survMm — use of default values.&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">survmm</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">16</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - survMm not found in data&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
@@ -387,7 +401,7 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cmdpos</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;xml&quot;</span><span class="p">][</span><span class="s2">&quot;cmdPos&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="n">_LOG</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Invalid values in cmdPos — use of default values.&quot;</span><span class="p">)</span>
+                <span class="n">_LOG</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Invalid values in cmdPos — use of default values.&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cmdpos</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span>
             
             <span class="bp">self</span><span class="o">.</span><span class="n">cmd_balloon_manuel</span>     <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmdpos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="mh">0x01</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
@@ -411,10 +425,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">state_test_router_zero</span>     <span class="o">=</span> <span class="mi">0</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">state_test_router_medium</span>   <span class="o">=</span> <span class="mi">0</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">state_test_router_hight</span>    <span class="o">=</span> <span class="mi">0</span>
-        
-        
-        
-
 
         <span class="c1">#outStat - Values of the 16 outputs from 0 to 100%.</span>
         <span class="c1">#&lt;outStat&gt;17;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;&lt;/outStat&gt;</span>
@@ -423,7 +433,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">outstat</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;xml&quot;</span><span class="p">][</span><span class="s2">&quot;outStat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">outstat</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outstat</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">16</span><span class="p">)[:</span><span class="mi">16</span><span class="p">]</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="n">_LOG</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Invalid values in outStat — use of default values.&quot;</span><span class="p">)</span>
+                <span class="n">_LOG</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Invalid values in outStat — use of default values.&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">outstat</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">16</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - outStat not found in data&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
@@ -435,7 +445,7 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cptvals</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;xml&quot;</span><span class="p">][</span><span class="s2">&quot;cptVals&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="n">_LOG</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Invalid values in cptVals — use of default values.&quot;</span><span class="p">)</span>
+                <span class="n">_LOG</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Invalid values in cptVals — use of default values.&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">daily_consumption</span>          <span class="o">=</span> <span class="p">(</span> <span class="nb">float</span><span class="p">(</span><span class="n">_hex2int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cptvals</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">/</span> <span class="mf">10000.0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">daily_injection</span>            <span class="o">=</span> <span class="p">(</span> <span class="nb">float</span><span class="p">(</span><span class="n">_hex2int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cptvals</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">/</span> <span class="o">-</span><span class="mf">10000.0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">daily_production</span>           <span class="o">=</span> <span class="p">(</span> <span class="nb">float</span><span class="p">(</span><span class="n">_hex2int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cptvals</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span> <span class="o">/</span> <span class="o">-</span><span class="mf">10000.0</span><span class="p">)</span>
@@ -446,8 +456,6 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">daily_balloon_consumption</span>  <span class="o">=</span> <span class="mi">0</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">daily_radiator_consumption</span> <span class="o">=</span> <span class="mi">0</span>
-            
-            
         <span class="k">else</span><span class="p">:</span>
             <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - cptVals not found in data&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cptvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span>
@@ -460,14 +468,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">production_daily_consumption</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">daily_production</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">daily_injection</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">total_consumption</span>              <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">daily_consumption</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">production_daily_consumption</span>
         
-
         <span class="c1">#chOutVal - Values calculated at the output of the heating modules.</span>
         <span class="c1">#&lt;chOutVal&gt;0;0;0;ff;:0,0;0,0;0,0;0,0;&lt;/chOutVal&gt;</span>
         <span class="k">if</span> <span class="s2">&quot;chOutVal&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;xml&quot;</span><span class="p">]:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">choutvalchoutval</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;xml&quot;</span><span class="p">][</span><span class="s2">&quot;chOutVal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="n">_LOG</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Invalid values in chOutVal — use of default values.&quot;</span><span class="p">)</span>
+                <span class="n">_LOG</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Invalid values in chOutVal — use of default values.&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cptvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">8</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - chOutVal not found in data&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
@@ -475,7 +482,7 @@
 
 
 <div class="viewcode-block" id="MSunPVDataIndex">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.MSunPVDataIndex">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.MSunPVDataIndex">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">MSunPVDataIndex</span><span class="p">(</span><span class="n">MSunPVCommon</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to store MSunPV Index data to JSON.&quot;&quot;&quot;</span>
 
@@ -490,20 +497,24 @@
     <span class="n">firmware_wifi</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1">#: Firmware Wifi ``105b``</span>
     <span class="n">firmware_router</span><span class="p">:</span> <span class="nb">str</span>    <span class="c1">#: Firmware Router ``105b``</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;typAns - Type sensors&quot;&quot;&quot;</span>
-    <span class="n">typans</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">typans</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>       <span class="c1">#: Type sensors ``PowRéso;1;6:PowP.V;1;6:OutBal;0;3:OutRad;0;3:VoltRés;1;4:T_Bal1;1;18:T_SDB;1;18:T_Amb;1;18:S9;0;0:S10;0;0:S11;0;0:S12;0;0:S13;0;0:S14;0;0:S15;0;0:S16;0;0:``</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;typouts - Type Output&quot;&quot;&quot;</span>
-    <span class="n">typans</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">typouts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>      <span class="c1">#: Type Output ``R_Bal1;0;2:Rad_SDB;0;2:A3;0;0:A4;0;0:A5;0;0:A6;0;0:A7;0;0:A8;0;0:A9;0;0:A10;0;0:A11;0;0:A12;0;0:A13;0;0:A14;0;0:A15;0;0:A16;0;0:``</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;cmdM - Command&quot;&quot;&quot;</span>
-    <span class="n">cmdm</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">cmdm</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>         <span class="c1">#: Command</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;typCpt - Type compteur&quot;&quot;&quot;</span>
-    <span class="n">typcpt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">typcpt</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>       <span class="c1">#: Type compteur</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">data_xml</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Init MSunPVDataIndex.</span>
 
+<span class="sd">        Args:</span>
+<span class="sd">            data_xml (str): data retry</span>
+
+<span class="sd">        Raises:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        
         <span class="n">data</span> <span class="o">=</span> <span class="n">xmltodict</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">data_xml</span><span class="p">)</span>
 
         <span class="c1">#paramSys -  System information</span>
@@ -576,6 +587,19 @@
         
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__type_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GenericType</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Type Sensor or other</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (list) : Data</span>
+<span class="sd">            id (int)    : id (default 0)</span>
+
+<span class="sd">        Raises:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            GenericType: Generic Type for id</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        
         <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="n">dotpos</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="nb">type</span> <span class="o">=</span> <span class="mi">0</span>
@@ -632,6 +656,7 @@
         <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="mi">25</span><span class="p">:</span>
             <span class="n">suffix</span>  <span class="o">=</span> <span class="s2">&quot;lux&quot;</span>
 
+        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - type info - Name: </span><span class="si">%s</span><span class="s2">, Suffix: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">suffix</span><span class="p">)</span>
         <span class="n">field</span><span class="p">:</span> <span class="n">GenericType</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
             <span class="s2">&quot;dotpos&quot;</span><span class="p">:</span> <span class="n">dotpos</span><span class="p">,</span>
@@ -641,21 +666,54 @@
         <span class="k">return</span> <span class="n">field</span>
 
 <div class="viewcode-block" id="MSunPVDataIndex.sensor_type_info">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.MSunPVDataIndex.sensor_type_info">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.MSunPVDataIndex.sensor_type_info">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">sensor_type_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SensorType</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sensor information type</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            id (int)    : id (default 0)</span>
+
+<span class="sd">        Raises:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            SensorType: Sensor information</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__type_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">typans</span><span class="p">,</span><span class="nb">id</span><span class="p">)</span></div>
 
     
 <div class="viewcode-block" id="MSunPVDataIndex.counter_type_info">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.MSunPVDataIndex.counter_type_info">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.MSunPVDataIndex.counter_type_info">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">counter_type_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span> <span class="n">CounterType</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Counter information type</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            id (int)    : id (default 0)</span>
+
+<span class="sd">        Raises:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            CounterType: Counter information</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__type_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">typcpt</span><span class="p">,</span><span class="nb">id</span><span class="p">)</span></div>
 
         
 
 <div class="viewcode-block" id="MSunPVDataIndex.output_type_txt">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.MSunPVDataIndex.output_type_txt">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.MSunPVDataIndex.output_type_txt">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">output_type_txt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Output text</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            id (int)    : id (default 0)</span>
+
+<span class="sd">        Raises:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: text</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">txt</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">typouts</span><span class="p">[</span><span class="nb">id</span><span class="p">])</span> <span class="o">&gt;</span> <span class="nb">id</span><span class="p">:</span>
             <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">typouts</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -663,8 +721,19 @@
 
     
 <div class="viewcode-block" id="MSunPVDataIndex.command_info">
-<a class="viewcode-back" href="../../msunpv.html#msunpv.data.MSunPVDataIndex.command_info">[docs]</a>
+<a class="viewcode-back" href="../../msunpv.html#msunpv.MSunPVDataIndex.command_info">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">command_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Command</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Command information</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            id (int)    : id (default 0)</span>
+
+<span class="sd">        Raises:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Command</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cmdtype</span>     <span class="o">=</span> <span class="mi">0</span>
         <span class="n">cmdvalue</span>    <span class="o">=</span> <span class="mi">0</span>
         <span class="n">cmdtxt</span>      <span class="o">=</span> <span class="s2">&quot;&quot;</span>
