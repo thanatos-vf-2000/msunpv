@@ -1,7 +1,13 @@
 # CHANGELOG
 
 <!-- version list -->
-## v0.2.0 (2025-11-14)
+## v0.2.1 (2025-12-08)
+ - Update documentation,
+ - Valid Python version 3.15.0a7.
+
+## v0.2.0 (2025-12-07)
+ - Add class MSunPVRead,
+ - Update comment on all class,
  - Add CONTRIBUTING.md and CHANGELOG.md,
  - Update README.md:
     * add Badges,

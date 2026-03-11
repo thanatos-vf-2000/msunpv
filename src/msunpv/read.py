@@ -105,6 +105,7 @@ class MSunPVRead:
             - MSunPVDataIndex
             
         Args:
+            All (bool): Rafresh All data (status.xml and index.xml) (Default: False)
 
         Raises:
             MSunPVXMLDataException: Message
