@@ -319,7 +319,7 @@ class MSunPVDataStatus(MSunPVCommon):
             self.state_test_router_inject   = (int(self.cmdpos[7]) & 0x01) != 0
             self.state_test_router_zero     = (int(self.cmdpos[7]) & 0x02) != 0
             self.state_test_router_medium   = (int(self.cmdpos[7]) & 0x04) != 0
-            self.state_test_router_hight    = (int(self.cmdpos[7]) & 0x08) != 0
+            self.state_test_router_height    = (int(self.cmdpos[7]) & 0x08) != 0
 
         else:
             _LOG.debug("%s - cmdpos not found in data", self.__class__.__name__)
@@ -331,7 +331,7 @@ class MSunPVDataStatus(MSunPVCommon):
             self.state_test_router_inject   = 0
             self.state_test_router_zero     = 0
             self.state_test_router_medium   = 0
-            self.state_test_router_hight    = 0
+            self.state_test_router_height    = 0
 
         #outStat - Values of the 16 outputs from 0 to 100%.
         #<outStat>17;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;</outStat>

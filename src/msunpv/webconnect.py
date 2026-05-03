@@ -178,11 +178,11 @@ class MSunPVWebConnect:
             raise MSunPVXMLDataException( f"{e}" )
         return MSunPVDataIndex(data_xml)
     
-    async def refresh(self, dataType: str = "status.xml") -> bool:
+    async def refresh(self, data_type: str = "status.xml") -> bool:
         """Get Index or Status from MSunPV.
 
         Args:
-            dataType (str): status.xml (default) or index.xml
+            data_type(str): status.xml (default) or index.xml
 
         Raises:
 
@@ -190,8 +190,8 @@ class MSunPVWebConnect:
             MSunPVDataIndex: class MSunPVDataIndex
         """
         
-        _LOG.debug("%s - Refresh data %s on %s", self.__class__.__name__, dataType, self._ip)
-        if dataType == "status.xml":
+        _LOG.debug("%s - Refresh data %s on %s", self.__class__.__name__, data_type, self._ip)
+        if data_type== "status.xml":
             return await self.get_status()
         else:
             return await self.get_index()

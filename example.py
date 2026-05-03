@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 """Basic usage example and testing of MSunPV."""
 
 import logging
@@ -7,88 +8,56 @@ import signal
 import argparse
 import asyncio
 
-import aiohttp
-
 from typing import Any
-
-from msunpv import exceptions, webconnect, read
+from msunpv import exceptions, read
 
 _LOG = logging.getLogger(__name__)
 
-VAR = {}
+VAR: dict[str, Any] = {}
+
 
 async def main_loop(ip: str) -> None:
     """Run main loop."""
-    """
-    async with aiohttp.ClientSession(
-        connector=aiohttp.TCPConnector(ssl=False)
-    ) as session:
-        VAR["msunpv"] = webconnect.MSunPVWebConnect(
-            session, ip
-        )
-
-        try:
-            VAR["running"] = True  # type: ignore[assignment]
-            cnt = 5
-            while VAR.get("running"):
-                data = await VAR["msunpv"].get_status()
-                cnt -= 1
-                print(data.__str__())
-                print(f"time: %s" % data.get("time"))
-                await VAR["msunpv"].refresh()
-                if cnt == 0:
-                    break
-                await asyncio.sleep(2)
-        except exceptions.MSunPVConnectionException:
-            _LOG.warning("MSunPVConnectionException")
-            return
-        except exceptions.MSunPVXMLDataException:
-            _LOG.warning("MSunPVXMLDataException")
-            return
-        
-        try:
-            VAR["running"] = True  # type: ignore[assignment]
-            data = await VAR["msunpv"].get_index()
-
-            print(data.sensor_type_info(0))
-            print(data.sensor_type_info(2))
-            print(data.command_info(0))
-            print(data.counter_type_info(0))
-            print(data.output_type_txt(0))
-
-        except exceptions.MSunPVConnectionException:
-            _LOG.warning("MSunPVConnectionException")
-            return
-        except exceptions.MSunPVXMLDataException:
-            _LOG.warning("MSunPVXMLDataException")
-            return
-        
-        finally:
-            _LOG.info("Closing Session...")
-    """
     _LOG.info("Start MSunPVRead...")
+
     try:
         reader = read.MSunPVRead(ip)
         await reader.start()
+
         try:
             VAR["running"] = True
             cnt = 5
+
             while VAR.get("running"):
                 await reader.refresh_data()
                 cnt -= 1
-                print("Power reso: %s" % (reader.DataMSunPVDataStatus.get("power_reso")))
+
+                # Accès direct aux attributs typés (recommandé)
+                power = reader.DataMSunPVDataStatus.power_reso
+                print("Power reso: %s W" % power)
+
+                # Accès alternatif via la méthode générique .get()
+                # power = reader.DataMSunPVDataStatus.get("power_reso")
+
                 if cnt == 0:
                     break
+
                 await reader.wait_for(10)
+
+        except exceptions.MSunPVConnectionException as e:
+            _LOG.warning("MSunPVConnectionException: %s", e)
+        except exceptions.MSunPVXMLDataException as e:
+            _LOG.warning("MSunPVXMLDataException: %s", e)
         except Exception as e:
-            _LOG.warning("❌ Exception: %s", e)
+            _LOG.warning("Unexpected exception: %s", e)
         finally:
             await reader.stop()
+
     except Exception as e:
-        _LOG.warning("❌ Exception: %s", e)
-        
+        _LOG.warning("Failed to start reader: %s", e)
     finally:
-            _LOG.info("End MSunPVRead...")
+        _LOG.info("End MSunPVRead.")
+
 
 async def main() -> None:
     """Run example."""
@@ -100,7 +69,6 @@ async def main() -> None:
         type=str,
         help="Web address of the MSunPV module (ip-address or hostname)",
     )
-
     args = parser.parse_args()
 
     def _shutdown(*_: Any) -> None:
@@ -108,7 +76,8 @@ async def main() -> None:
 
     signal.signal(signal.SIGINT, _shutdown)
 
-    await main_loop( ip=args.ip)
+    await main_loop(ip=args.ip)
+
 
 if __name__ == "__main__":
     asyncio.run(main())

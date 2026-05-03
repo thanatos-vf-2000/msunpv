@@ -41,7 +41,7 @@ You can create issues in this repository to plan, discuss, and track work. Issue
 We welcome contributions of all kinds to this repository. For instructions on how to get started and
 descriptions of our development workflows, please see our [contributing guide][contrib].
 
-[contrib]: https://github.com/thanatos-vf-2000/esp32-c6-lcd-1.47/blob/main/CONTRIBUTING.md
+[contrib]: https://github.com/thanatos-vf-2000/msunpv/blob/main/CONTRIBUTING.md
 
 ## License
 

@@ -1,6 +1,12 @@
 # CHANGELOG
 
 <!-- version list -->
+## v0.2.2 (2026-05-03)
+ - error: exemple.py,
+ - error: rename data element state_test_router_hight to state_test_router_height,
+ - error: refresh() in MSunPVWebConnect - camelCase dataType not snake_case (data_type),
+ - Valid Python version 3.15.0a8.
+
 ## v0.2.1 (2025-12-08)
  - Update documentation,
  - Valid Python version 3.15.0a7.

@@ -2,7 +2,7 @@
 
 
 class MSunPVException(Exception):
-    """Base exception of the pysma library."""
+    """Base exception of the msunpv library."""
 
 
 class MSunPVConnectionException(MSunPVException):

@@ -33,6 +33,14 @@ msunpv.exceptions module
    :show-inheritance:
    :undoc-members:
 
+msunpv.read module
+------------------
+
+.. automodule:: msunpv.read
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 msunpv.webconnect module
 ------------------------
 
