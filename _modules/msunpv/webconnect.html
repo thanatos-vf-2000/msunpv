@@ -261,11 +261,11 @@
     
 <div class="viewcode-block" id="MSunPVWebConnect.refresh">
 <a class="viewcode-back" href="../../msunpv.html#msunpv.MSunPVWebConnect.refresh">[docs]</a>
-    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataType</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;status.xml&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;status.xml&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get Index or Status from MSunPV.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            dataType (str): status.xml (default) or index.xml</span>
+<span class="sd">            data_type(str): status.xml (default) or index.xml</span>
 
 <span class="sd">        Raises:</span>
 
@@ -273,8 +273,8 @@
 <span class="sd">            MSunPVDataIndex: class MSunPVDataIndex</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         
-        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Refresh data </span><span class="si">%s</span><span class="s2"> on </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">dataType</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">dataType</span> <span class="o">==</span> <span class="s2">&quot;status.xml&quot;</span><span class="p">:</span>
+        <span class="n">_LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - Refresh data </span><span class="si">%s</span><span class="s2"> on </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">data_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data_type</span><span class="o">==</span> <span class="s2">&quot;status.xml&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_status</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_index</span><span class="p">()</span></div>

@@ -288,6 +288,20 @@
 <li class="toctree-l3"><a class="reference internal" href="#msunpv.exceptions.MSunPVXMLDataException"><code class="docutils literal notranslate"><span class="pre">MSunPVXMLDataException</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#module-msunpv.read">msunpv.read module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#msunpv.read.MSunPVRead"><code class="docutils literal notranslate"><span class="pre">MSunPVRead</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.read.MSunPVRead.DataMSunPVDataIndex"><code class="docutils literal notranslate"><span class="pre">MSunPVRead.DataMSunPVDataIndex</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.read.MSunPVRead.DataMSunPVDataStatus"><code class="docutils literal notranslate"><span class="pre">MSunPVRead.DataMSunPVDataStatus</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.read.MSunPVRead.last_read_td"><code class="docutils literal notranslate"><span class="pre">MSunPVRead.last_read_td</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.read.MSunPVRead.last_read_ti"><code class="docutils literal notranslate"><span class="pre">MSunPVRead.last_read_ti</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.read.MSunPVRead.refresh_data"><code class="docutils literal notranslate"><span class="pre">MSunPVRead.refresh_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.read.MSunPVRead.start"><code class="docutils literal notranslate"><span class="pre">MSunPVRead.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.read.MSunPVRead.stop"><code class="docutils literal notranslate"><span class="pre">MSunPVRead.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.read.MSunPVRead.wait_for"><code class="docutils literal notranslate"><span class="pre">MSunPVRead.wait_for()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-msunpv.webconnect">msunpv.webconnect module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#msunpv.webconnect.MSunPVWebConnect"><code class="docutils literal notranslate"><span class="pre">MSunPVWebConnect</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#msunpv.webconnect.MSunPVWebConnect.get_index"><code class="docutils literal notranslate"><span class="pre">MSunPVWebConnect.get_index()</span></code></a></li>
@@ -439,6 +453,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#msunpv.exceptions.MSunPVConnectionException"><code class="docutils literal notranslate"><span class="pre">MSunPVConnectionException</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#msunpv.exceptions.MSunPVException"><code class="docutils literal notranslate"><span class="pre">MSunPVException</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#msunpv.exceptions.MSunPVXMLDataException"><code class="docutils literal notranslate"><span class="pre">MSunPVXMLDataException</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-msunpv.read">msunpv.read module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#msunpv.read.MSunPVRead"><code class="docutils literal notranslate"><span class="pre">MSunPVRead</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-msunpv.webconnect">msunpv.webconnect module</a><ul>
@@ -1059,7 +1077,7 @@
 <dt class="sig sig-object py" id="msunpv.MSunPVException">
 <span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">msunpv.</span></span><span class="sig-name descname"><span class="pre">MSunPVException</span></span><a class="reference internal" href="_modules/msunpv/exceptions.html#MSunPVException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.MSunPVException" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
-<p>Base exception of the pysma library.</p>
+<p>Base exception of the msunpv library.</p>
 </dd></dl>
 
 <dl class="py class">
@@ -1191,11 +1209,11 @@ Call HTTP URL: <a class="reference external" href="http:/">http:/</a>/&lt;IP_HOS
 
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.MSunPVWebConnect.refresh">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">refresh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'status.xml'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/msunpv/webconnect.html#MSunPVWebConnect.refresh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.MSunPVWebConnect.refresh" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">refresh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'status.xml'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/msunpv/webconnect.html#MSunPVWebConnect.refresh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.MSunPVWebConnect.refresh" title="Link to this definition"></a></dt>
 <dd><p>Get Index or Status from MSunPV.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>dataType</strong> (<em>str</em>) – status.xml (default) or index.xml</p>
+<dd class="field-odd"><p><strong>data_type</strong> (<em>str</em>) – status.xml (default) or index.xml</p>
 </dd>
 </dl>
 <p>Raises:</p>
@@ -1930,7 +1948,7 @@ Call HTTP URL: <a class="reference external" href="http:/">http:/</a>/&lt;IP_HOS
 <dt class="sig sig-object py" id="msunpv.exceptions.MSunPVException">
 <span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">msunpv.exceptions.</span></span><span class="sig-name descname"><span class="pre">MSunPVException</span></span><a class="reference internal" href="_modules/msunpv/exceptions.html#MSunPVException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.exceptions.MSunPVException" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
-<p>Base exception of the pysma library.</p>
+<p>Base exception of the msunpv library.</p>
 </dd></dl>
 
 <dl class="py exception">
@@ -1938,6 +1956,105 @@ Call HTTP URL: <a class="reference external" href="http:/">http:/</a>/&lt;IP_HOS
 <span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">msunpv.exceptions.</span></span><span class="sig-name descname"><span class="pre">MSunPVXMLDataException</span></span><a class="reference internal" href="_modules/msunpv/exceptions.html#MSunPVXMLDataException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.exceptions.MSunPVXMLDataException" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#msunpv.exceptions.MSunPVException" title="msunpv.exceptions.MSunPVException"><code class="xref py py-class docutils literal notranslate"><span class="pre">MSunPVException</span></code></a></p>
 <p>XML Data Exception</p>
+</dd></dl>
+
+</section>
+<section id="module-msunpv.read">
+<span id="msunpv-read-module"></span><h2>msunpv.read module<a class="headerlink" href="#module-msunpv.read" title="Link to this heading"></a></h2>
+<p>MSunPV Read library for Python.</p>
+<p>See: <a class="reference external" href="https://ard-tek.com/">https://ard-tek.com/</a></p>
+<p>Source: <a class="reference external" href="https://github.com/thanatos-vf-2000/msunpv">https://github.com/thanatos-vf-2000/msunpv</a></p>
+<p>Init MSunPV connection.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>ip (str): Hostname or IP address of MSunPV 2*2 or 4*4</p>
+</dd>
+<dt>Raises:</dt><dd><p>KeyError: Hostname or IP address empty</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py class">
+<dt class="sig sig-object py" id="msunpv.read.MSunPVRead">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">msunpv.read.</span></span><span class="sig-name descname"><span class="pre">MSunPVRead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/msunpv/read.html#MSunPVRead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.read.MSunPVRead" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to Read the MSunPV using webconnect module.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="msunpv.read.MSunPVRead.DataMSunPVDataIndex">
+<span class="sig-name descname"><span class="pre">DataMSunPVDataIndex</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#msunpv.data.MSunPVDataIndex" title="msunpv.data.MSunPVDataIndex"><span class="pre">MSunPVDataIndex</span></a></span><a class="headerlink" href="#msunpv.read.MSunPVRead.DataMSunPVDataIndex" title="Link to this definition"></a></dt>
+<dd><p>Data from MSunPV index.xml</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="msunpv.read.MSunPVRead.DataMSunPVDataStatus">
+<span class="sig-name descname"><span class="pre">DataMSunPVDataStatus</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#msunpv.data.MSunPVDataStatus" title="msunpv.data.MSunPVDataStatus"><span class="pre">MSunPVDataStatus</span></a></span><a class="headerlink" href="#msunpv.read.MSunPVRead.DataMSunPVDataStatus" title="Link to this definition"></a></dt>
+<dd><p>Data from MSunPV status.xml</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="msunpv.read.MSunPVRead.last_read_td">
+<span class="sig-name descname"><span class="pre">last_read_td</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#msunpv.read.MSunPVRead.last_read_td" title="Link to this definition"></a></dt>
+<dd><p>Last read MSunPV status.xml</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="msunpv.read.MSunPVRead.last_read_ti">
+<span class="sig-name descname"><span class="pre">last_read_ti</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#msunpv.read.MSunPVRead.last_read_ti" title="Link to this definition"></a></dt>
+<dd><p>Last read MSunPV index.xml</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msunpv.read.MSunPVRead.refresh_data">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">refresh_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">All</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/msunpv/read.html#MSunPVRead.refresh_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.read.MSunPVRead.refresh_data" title="Link to this definition"></a></dt>
+<dd><p>Reads data from WebConnect once.
+Read MSunPV data from status.xml and index.xml and update local variables:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>MSunPVDataStatus</p></li>
+<li><p>MSunPVDataIndex</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>All</strong> (<em>bool</em>) – Rafresh All data (status.xml and index.xml) (Default: False)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#msunpv.MSunPVXMLDataException" title="msunpv.MSunPVXMLDataException"><strong>MSunPVXMLDataException</strong></a> – Message</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msunpv.read.MSunPVRead.start">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/msunpv/read.html#MSunPVRead.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.read.MSunPVRead.start" title="Link to this definition"></a></dt>
+<dd><p>Initializes the HTTP session and the MSunPVWebConnect object.</p>
+<p>Args:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#msunpv.MSunPVConnectionException" title="msunpv.MSunPVConnectionException"><strong>MSunPVConnectionException</strong></a> – Hostname or IP address empty</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msunpv.read.MSunPVRead.stop">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/msunpv/read.html#MSunPVRead.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.read.MSunPVRead.stop" title="Link to this definition"></a></dt>
+<dd><p>Properly closes the HTTP session.</p>
+<p>Args:</p>
+<p>Raises:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="msunpv.read.MSunPVRead.wait_for">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">wait_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seconds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/msunpv/read.html#MSunPVRead.wait_for"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.read.MSunPVRead.wait_for" title="Link to this definition"></a></dt>
+<dd><p>Number of seconds to wait since the last status.xml call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seconds</strong> (<em>float</em>) – number of seconds.</p>
+</dd>
+</dl>
+<p>Raises:</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -2001,11 +2118,11 @@ Call HTTP URL: <a class="reference external" href="http:/">http:/</a>/&lt;IP_HOS
 
 <dl class="py method">
 <dt class="sig sig-object py" id="msunpv.webconnect.MSunPVWebConnect.refresh">
-<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">refresh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'status.xml'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/msunpv/webconnect.html#MSunPVWebConnect.refresh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.webconnect.MSunPVWebConnect.refresh" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">refresh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'status.xml'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/msunpv/webconnect.html#MSunPVWebConnect.refresh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#msunpv.webconnect.MSunPVWebConnect.refresh" title="Link to this definition"></a></dt>
 <dd><p>Get Index or Status from MSunPV.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>dataType</strong> (<em>str</em>) – status.xml (default) or index.xml</p>
+<dd class="field-odd"><p><strong>data_type</strong> (<em>str</em>) – status.xml (default) or index.xml</p>
 </dd>
 </dl>
 <p>Raises:</p>
