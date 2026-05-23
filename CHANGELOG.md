@@ -1,6 +1,10 @@
 # CHANGELOG
 
 <!-- version list -->
+## v1.0.0 (2026-05-23)
+ - Add pytest,
+ - Update documentation.
+
 ## v0.2.2 (2026-05-03)
  - error: exemple.py,
  - error: rename data element state_test_router_hight to state_test_router_height,

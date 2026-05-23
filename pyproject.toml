@@ -4,14 +4,23 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "msunpv"
-version = "0.2.2"
+version = "1.0.0"
 authors = [
-  { name="franck VANHOUCKE", email="vanhoucke.franck@free.fr" },
+  { name="Franck VANHOUCKE", email="vanhoucke.franck@free.fr" },
 ]
+maintainers = [
+  { name="Franck VANHOUCKE", email="vanhoucke.franck@free.fr" },
+]
+
 description = "Library to interface an msunpv devices."
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Home Automation",
+    "Development Status :: 5 - Production/Stable",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -20,6 +29,9 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: 3.15",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Natural Language :: English",
 ]
 license = "Apache-2.0"
 license-files = ["LICENSE"]
@@ -27,8 +39,25 @@ dependencies = [
   "aiohttp>=3,<4",
   "xmltodict"
 ]
+keywords = ["msunpv", "sun", "solar router", "self-consumption", "ard-tek"]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7",
+  "pytest-asyncio>=0.23",
+]
+docs = [
+  "sphinx>=7",
+  "sphinx-rtd-theme>=2",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
 
 [project.urls]
 Homepage = "https://github.com/thanatos-vf-2000/msunpv"
-Issues = "https://github.com/thanatos-vf-2000/msunpv"
+Repository = "https://github.com/thanatos-vf-2000/msunpv"
+Issues = "https://github.com/thanatos-vf-2000/msunpv/issues"
 Documents = "https://thanatos-vf-2000.github.io/msunpv/"
+Changelog = "https://github.com/thanatos-vf-2000/msunpv/blob/main/CHANGELOG.md"
