@@ -6,20 +6,20 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>msunpv documentation &mdash; msunpv 0.2.0 documentation</title>
+  <title>msunpv - documentation &mdash; msunpv 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=938c9ccc"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="msunpv package" href="msunpv.html" /> 
+    <link rel="next" title="Quick Start" href="quickstart.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,10 +41,18 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="msunpv.html">msunpv package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">src</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://ard-tek.com/">MSunPV MD Router Solar</a></li>
 </ul>
 
@@ -62,7 +70,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">msunpv documentation</li>
+      <li class="breadcrumb-item active">msunpv - documentation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -73,24 +81,43 @@
            <div itemprop="articleBody">
              
   <section id="msunpv-documentation">
-<h1>msunpv documentation<a class="headerlink" href="#msunpv-documentation" title="Link to this heading"></a></h1>
-<p>Add your content using <code class="docutils literal notranslate"><span class="pre">reStructuredText</span></code> syntax. See the
-<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">reStructuredText</a>
-documentation for details.</p>
+<h1>msunpv - documentation<a class="headerlink" href="#msunpv-documentation" title="Link to this heading"></a></h1>
+<p>Version: 1.0.0</p>
+<p><strong>msunpv</strong> is a Python asyncio library to interface with <a class="reference external" href="https://ard-tek.com/">MSunPV</a>
+solar routers (MS_PV2_2d and MS_PV4_4d models).
+It retrieves real-time power measurements, temperatures, counters and command states
+via HTTP over the device’s local network.</p>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#basic-usage-read-status-once">Basic usage — read status once</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#polling-loop-with-wait-for">Polling loop with wait_for</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#reading-the-device-index">Reading the device index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#using-the-lower-level-api-aiohttp-session">Using the lower-level API (aiohttp session)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#error-handling">Error handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#generic-attribute-access">Generic attribute access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#next-steps">Next steps</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="msunpv.html">msunpv package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.CounterType"><code class="docutils literal notranslate"><span class="pre">CounterType</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.MSunPVWebConnect"><code class="docutils literal notranslate"><span class="pre">MSunPVWebConnect</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.MSunPVException"><code class="docutils literal notranslate"><span class="pre">MSunPVException</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.MSunPVConnectionException"><code class="docutils literal notranslate"><span class="pre">MSunPVConnectionException</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.MSunPVXMLDataException"><code class="docutils literal notranslate"><span class="pre">MSunPVXMLDataException</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.MSunPVDataIndex"><code class="docutils literal notranslate"><span class="pre">MSunPVDataIndex</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.MSunPVDataStatus"><code class="docutils literal notranslate"><span class="pre">MSunPVDataStatus</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.MSunPVException"><code class="docutils literal notranslate"><span class="pre">MSunPVException</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.MSunPVRead"><code class="docutils literal notranslate"><span class="pre">MSunPVRead</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.MSunPVWebConnect"><code class="docutils literal notranslate"><span class="pre">MSunPVWebConnect</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.MSunPVXMLDataException"><code class="docutils literal notranslate"><span class="pre">MSunPVXMLDataException</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.SensorType"><code class="docutils literal notranslate"><span class="pre">SensorType</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.CounterType"><code class="docutils literal notranslate"><span class="pre">CounterType</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="msunpv.html#msunpv.MSunPVRead"><code class="docutils literal notranslate"><span class="pre">MSunPVRead</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="msunpv.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="msunpv.html#module-msunpv.const">msunpv.const module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="msunpv.html#module-msunpv.data">msunpv.data module</a></li>
@@ -103,6 +130,12 @@ documentation for details.</p>
 <li class="toctree-l2"><a class="reference internal" href="msunpv.html">msunpv package</a></li>
 </ul>
 </li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://ard-tek.com/">MSunPV MD Router Solar</a></li>
 </ul>
 </div>
@@ -120,13 +153,13 @@ documentation for details.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="msunpv.html" class="btn btn-neutral float-right" title="msunpv package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Franck VANHOUCKE.</p>
+    <p>&#169; Copyright 2026, Franck VANHOUCKE.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
